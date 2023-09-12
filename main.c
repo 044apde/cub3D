@@ -6,13 +6,14 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:10:55 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/10 18:13:22 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:22:23 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "mlx/mlx.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	return (0);
 }

@@ -1,6 +1,6 @@
 NAME		=	cub3D
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	
 SOURCE		=	main.c
 HEADER		=	cub3d.h
 LIBRARY 	=	libft/libft.a mlx/libmlx.a
