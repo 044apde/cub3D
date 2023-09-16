@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 18:10:55 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/16 10:34:00 by shikim           ###   ########.fr       */
+/*   Created: 2023/09/15 14:08:37 by shikim            #+#    #+#             */
+/*   Updated: 2023/09/16 13:36:53 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "mlx/mlx.h"
+#include "../../cub3d.h"
 
-int	main(int argc, char **argv)
+void	ctrl_error(char *error_message)
 {
-	t_player	*player;
-	t_map		*map_info;
+	show_error(error_message);
+	exit(1);
+}
 
-	if (argc != 2)
-	{
-		show_error("need map file\n");
-		return (1);
-	}
-	map_info = parse_map_info(argv[1]);
-	return (0);
+void	show_error(char *error_message)
+{
+	write(2, "Error\n", 6);
+	write(2, error_message, ft_strlen(error_message));
+	return ;
 }

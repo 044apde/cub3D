@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 18:10:55 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/16 10:34:00 by shikim           ###   ########.fr       */
+/*   Created: 2023/09/16 13:49:56 by shikim            #+#    #+#             */
+/*   Updated: 2023/09/16 13:50:04 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "mlx/mlx.h"
+#include "../../cub3d.h"
 
-int	main(int argc, char **argv)
+int	compare_str(char *str1, char *str2)
 {
-	t_player	*player;
-	t_map		*map_info;
+	int	i;
 
-	if (argc != 2)
+	i = 0;
+	if (str1 == NULL || str2 == NULL)
+		return (FALSE);
+	while (str1[i] != '\0' && str2[i] != '\0')
 	{
-		show_error("need map file\n");
-		return (1);
+		if (str1[i] != str2[i])
+			return (FALSE);
+		i++;
 	}
-	map_info = parse_map_info(argv[1]);
-	return (0);
+	if (str1[i] != '\0' || str2[i] != '\0')
+		return (FALSE);
+	return (TRUE);
 }

@@ -1,7 +1,10 @@
 NAME		=	cub3D
 CC			=	cc
 CFLAGS		=	
-SOURCE		=	main.c
+SOURCE		=	main.c \
+				src/parse_map/parse_map.c src/parse_map/utils1.c src/parse_map/utils2.c\
+				src/utils/error.c src/utils/string.c\
+				src/gnl/get_next_line.c
 HEADER		=	cub3d.h
 LIBRARY 	=	libft/libft.a mlx/libmlx.a
 OBJECT		=	$(SOURCE:.c=.o)
@@ -20,12 +23,11 @@ $(LIBRARY):
 
 clean		:
 	rm -rf $(NAME) $(OBJECT)
-	$(MAKE) -C mlx clean
+	$(MAKE) -C libft clean
 	$(MAKE) -C mlx clean
 
 fclean		:	clean
-	$(MAKE) -C mlx fclean
-	$(MAKE) -C mlx fclean
+	$(MAKE) -C libft fclean
 
 re			:	fclean all
 
