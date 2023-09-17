@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:16:37 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/16 13:56:52 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/17 11:33:39 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	is_texture_information(char *line)
 		return (F);
 	if (compare_str(texture_information[0], "C") == TRUE)
 		return (C);
+	free_two_dimension_array(texture_information);
 	return (FALSE);
 }
 

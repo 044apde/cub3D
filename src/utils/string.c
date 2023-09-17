@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:49:56 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/16 13:50:04 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/17 11:16:16 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ int	compare_str(char *str1, char *str2)
 	if (str1[i] != '\0' || str2[i] != '\0')
 		return (FALSE);
 	return (TRUE);
+}
+
+void	free_two_dimension_array(char **array)
+{
+	int	i;
+	
+	i = 0;
+	while (array[i] != NULL)
+		free(array[i++]);
+	free(array);
 }

@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/16 13:59:52 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/17 11:27:27 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_texture
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	char	*c_color;
+	char	*f_color;
 }	t_texture;
 
 typedef struct s_map
@@ -62,6 +64,7 @@ typedef struct s_map
 void	show_error(char *error_message);
 void	ctrl_error(char *error_message);
 int		compare_str(char *str1, char *str2);
+void	free_two_dimension_array(char **array);
 
 // PARSE
 t_map	*parse_map_info(char *map_name);
