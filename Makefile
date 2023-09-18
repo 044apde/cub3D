@@ -2,8 +2,9 @@ NAME		=	cub3D
 CC			=	cc
 CFLAGS		=	
 SOURCE		=	main.c \
-				src/parse_map/parse_map.c src/parse_map/utils1.c src/parse_map/utils2.c\
-				src/utils/error.c src/utils/string.c\
+				src/parse_input/parse_input.c src/parse_input/utils1.c \
+				src/utils/error.c src/utils/string.c src/utils/file.c \
+				src/load_file/load_file.c src/load_file/utils1.c \
 				src/gnl/get_next_line.c
 HEADER		=	cub3d.h
 LIBRARY 	=	libft/libft.a mlx/libmlx.a

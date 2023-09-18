@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string.c                                           :+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/16 13:49:56 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/17 11:43:06 by shikim           ###   ########.fr       */
+/*   Created: 2023/09/17 11:42:25 by shikim            #+#    #+#             */
+/*   Updated: 2023/09/17 16:24:59 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	compare_str(char *str1, char *str2)
+int	open_file(char *map_path)
 {
-	int	i;
+	int	fd;
 
-	i = 0;
-	if (str1 == NULL || str2 == NULL)
-		return (FALSE);
-	while (str1[i] != '\0' && str2[i] != '\0')
+	fd = open(map_path, O_RDONLY);
+	if (fd == -1)
 	{
-		if (str1[i] != str2[i])
-			return (FALSE);
-		i++;
+		show_error("can't open file\n");
+		exit(1);
 	}
-	if (str1[i] != '\0' || str2[i] != '\0')
-		return (FALSE);
-	return (TRUE);
-}
-
-void	free_two_dimension_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i] != NULL)
-		free(array[i++]);
-	free(array);
+	return (fd);
 }

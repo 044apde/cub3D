@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/17 11:27:27 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/18 14:42:41 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,23 @@ typedef struct s_map
 	int			height;
 	int			width;
 	t_texture	*texture;
+	t_player	*player;
 }	t_map;
 
 // UTILS
 void	show_error(char *error_message);
 void	ctrl_error(char *error_message);
-int		compare_str(char *str1, char *str2);
 void	free_two_dimension_array(char **array);
-
-// PARSE
-t_map	*parse_map_info(char *map_name);
+int		compare_str(char *str1, char *str2);
 int		open_file(char *map_path);
-int		is_map_information(char *line);
-int		is_texture_information(char *line);
-int		is_map_componenet(char component);
-void	set_map_info(t_map *map_info, char *map_path);
+
+// PARSE INPUT
+char	*parse_input(char *input);
+char	*make_map_path(char *map_name);
+void	check_map_name(char *map_name);
+void	check_map_file(char *map_path);
+
+// LOAD FILE
+t_map	*init_map_info(void);
 
 #endif

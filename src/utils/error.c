@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 14:08:37 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/16 13:36:53 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/17 16:28:57 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	ctrl_error(char *error_message)
 
 void	show_error(char *error_message)
 {
-	write(2, "Error\n", 6);
+	write(2, "\033[0;35mError\n", ft_strlen("\033[0;35mError\n"));
 	write(2, error_message, ft_strlen(error_message));
+	write(2, "\033[0;0m", ft_strlen("\033[0;0m"));
 	return ;
 }
