@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:49:56 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/17 11:43:06 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/19 17:50:52 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,21 @@ void	free_two_dimension_array(char **array)
 	while (array[i] != NULL)
 		free(array[i++]);
 	free(array);
+}
+
+char	*trim_path(char *path)
+{
+	char	*trimmend_path;
+	int		i;
+
+	i = 0;
+	if (path == NULL)
+		return (NULL);
+	else
+	{
+		while (path[i] != '\n')
+			++i;
+		path[i] = '\0';
+	}
+	return (path);
 }

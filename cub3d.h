@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/18 14:42:41 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/19 17:54:39 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_player
 
 typedef struct s_texture
 {
-	int		count_texture;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -67,6 +66,7 @@ void	ctrl_error(char *error_message);
 void	free_two_dimension_array(char **array);
 int		compare_str(char *str1, char *str2);
 int		open_file(char *map_path);
+char	*trim_path(char *path);
 
 // PARSE INPUT
 char	*parse_input(char *input);
@@ -75,6 +75,17 @@ void	check_map_name(char *map_name);
 void	check_map_file(char *map_path);
 
 // LOAD FILE
+t_map	*load_file(char *map_path);
 t_map	*init_map_info(void);
+void	get_texture(t_map *map_info, int fd);
+void	compare_no_path(t_texture *texture, char *path);
+void	compare_so_path(t_texture *texture, char *path);
+void	compare_we_path(t_texture *texture, char *path);
+void	compare_ea_path(t_texture *texture, char *path);
+int		is_texture_identifier(char *str);
+int		is_texture_element(char *line);
+int		is_map_element(char *line);
+void	is_valid_path(int identifier, char *path, t_texture *texture);
+int		set_texture_path(t_map *map_info, char *line);
 
 #endif
