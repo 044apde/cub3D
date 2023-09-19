@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/19 20:59:59 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/19 23:10:30 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	free_two_dimension_array(char **array);
 int		compare_str(char *str1, char *str2);
 int		open_file(char *map_path);
 char	*trim_path(char *path);
+void	free_map_info(t_map *map_info);
 
 // PARSE INPUT
 char	*parse_input(char *input);
