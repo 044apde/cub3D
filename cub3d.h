@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/19 17:54:39 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/19 20:59:59 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	check_map_file(char *map_path);
 // LOAD FILE
 t_map	*load_file(char *map_path);
 t_map	*init_map_info(void);
+void	get_map(t_map *map_info, int fd, char *map_path);
 void	get_texture(t_map *map_info, int fd);
 void	compare_no_path(t_texture *texture, char *path);
 void	compare_so_path(t_texture *texture, char *path);
