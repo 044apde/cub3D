@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 20:27:09 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/19 21:46:37 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:53:42 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	set_map_width_height(t_map *map_info, int fd)
 void	get_map(t_map *map_info, int fd, char *map_path)
 {
 	set_map_width_height(map_info, fd);
-	// map_info->map =  make_map_array(map_info, map_path);
+	printf("width: %d height: %d\n", map_info->width, map_info->height);
+	map_info->map =  make_map_array(map_info, map_path);
 	// check_map_is_closed(map_info->map);
 	return ;
 }

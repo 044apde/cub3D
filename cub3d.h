@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/19 23:10:30 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:05:19 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ int		is_texture_element(char *line);
 int		is_map_element(char *line);
 void	is_valid_path(int identifier, char *path, t_texture *texture);
 int		set_texture_path(t_map *map_info, char *line);
+char	**make_map_array(t_map *map_info, char *map_path);
+int		is_map_component(char component);
 
 #endif
