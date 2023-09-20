@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/20 16:06:15 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:58:34 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ char	**init_map(t_map *map_info)
 	char	**map;
 	int		i;
 
-	map = (char **)malloc(sizeof(char *) * (map_info->width + 1));
+	map = (char **)malloc(sizeof(char *) * (map_info->height + 1));
 	i = 0;
 	if (map == NULL)
 		ctrl_error("faild to malloc\n");
 	else
 	{
-		map[map_info->width] = NULL;
+		map[map_info->height] = NULL;
 		while (map[i] != NULL)
 		{
-			map[i] = (char *)malloc(sizeof(char) *(map_info->height + 1));
+			map[i] = (char *)malloc(sizeof(char) *(map_info->width + 1));
 			if (map[i] == NULL)
 				ctrl_error("faild to malloc\n");
-			map[i][map_info->height] = '\0';
+			map[i][map_info->width] = '\0';
 			++i;
 		}
 	}
@@ -66,7 +66,7 @@ void	set_map_component(char **map, char *line)
 	{
 		if (is_map_component(line[width]) == FALSE)
 			ctrl_error("check map element's component\n");
-		map[width][height] = line[width];
+		map[height][width] = line[width];
 		width++;
 	}
 	height++;
@@ -79,10 +79,10 @@ void	pre_set_map(char **map, t_map *map_info)
 	int j;
 
 	i = 0;
-	while (i < map_info->width)
+	while (i < map_info->height)
 	{
 		j = 0;
-		while (j < map_info->height)
+		while (j < map_info->width)
 		{
 			map[i][j] = ' ';
 			j++;
