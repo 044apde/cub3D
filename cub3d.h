@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/20 17:38:11 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/20 18:03:12 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int		set_texture_path(t_map *map_info, char *line);
 char	**make_map_array(t_map *map_info, char *map_path);
 int		is_map_component(char component);
 void	check_starting_position(char **map, t_map *map_info);
+void	check_map_is_closed(char **map, t_map *map_info);
 
 #endif

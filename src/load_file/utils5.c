@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/20 16:58:34 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/20 17:42:24 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	set_map_component(char **map, char *line)
 void	pre_set_map(char **map, t_map *map_info)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < map_info->height)

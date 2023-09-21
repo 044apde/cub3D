@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:12:59 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/19 23:04:29 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/20 17:46:13 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	get_texture(t_map *map_info, int fd)
 			;
 		else if (is_map_element(line) == TRUE)
 			ctrl_error("check element order\n");
-		else if (is_texture_element(line) != FALSE)\
+		else if (is_texture_element(line) != FALSE)
 			count_texture += set_texture_path(map_info, line);
 		else
 			ctrl_error("invalid element\n");

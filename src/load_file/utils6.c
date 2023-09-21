@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/20 17:40:01 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/20 18:13:31 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,32 @@ void	check_starting_position(char **map, t_map *map_info)
 	}
 }
 
-void	check_map_is_closed()
+void	check_is_surrouned(char **map, int h, int w, t_map *map_info)
 {
-	
-	return ;
+	int	map_h;
+	int	map_w;
+
+	map_h = map_info->height;
+	map_w = map_info->width;
+}
+
+void	check_map_is_closed(char **map, t_map *map_info)
+{
+	int	height;
+	int	width;
+
+	height = 0;
+	while (height < map_info->height)
+	{
+		width = 0;
+		while (width < map_info->width)
+		{
+			if (map[height][width] == '0' || map[height][width] == 'N' || \
+				map[height][width] == 'S' || map[height][width] == 'E' || \
+				map[height][width] == 'W')
+				check_is_surrouned(map, height, width, map_info);
+			++width;
+		}
+		++height;
+	}
 }
