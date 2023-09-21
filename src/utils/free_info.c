@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:16:08 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/20 17:42:55 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/21 15:10:57 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	free_map_info(t_map *map_info)
 
 	texture = map_info->texture;
 	player = map_info->player;
+	map = map_info->map;
 	if (texture != NULL)
 	{
 		free_texture(texture);
