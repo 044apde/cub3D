@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 15:58:14 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/21 16:41:30 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include "src/gnl/get_next_line.h"
+# include "mlx/mlx.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -30,6 +31,14 @@
 # define EA 14
 # define F 15
 # define C 16
+
+typedef struct s_window
+{
+	void	*mlx;
+	void	*win;
+	double	time;
+	double	old_time;
+}	t_window;
 
 typedef struct s_player
 {
@@ -104,5 +113,6 @@ int			is_empty_space(char component);
 // CUB3D
 void		execute_cub3d(t_map *map_info);
 t_player	*init_player(t_map *map_info);
+t_window	*init_window();
 
 #endif

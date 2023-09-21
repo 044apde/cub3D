@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_cub3d.c                                    :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 16:48:20 by shikim           ###   ########.fr       */
+/*   Created: 2023/09/21 16:19:48 by shikim            #+#    #+#             */
+/*   Updated: 2023/09/21 16:43:03 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	execute_cub3d(t_map *map_info)
+t_window	*init_window()
 {
-	t_player	*player;
 	t_window	*window;
 
-	player = init_player(map_info);
-	window = init_window();
-	mlx_loop(window->mlx);
-	return ;
+	window = (t_window *)malloc(sizeof(t_window));
+	if (window == NULL)
+		ctrl_error("failed to malloc\n");
+	else
+	{
+		window->time = 0;
+		window->old_time = 0;
+		window->mlx = mlx_init();
+		window->win = mlx_new_window(window->mlx, 640, 480, "CUB3D");
+	}
+	return (window);
 }

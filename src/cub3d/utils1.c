@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:19:16 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 16:07:40 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/21 16:11:05 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,8 @@ t_player	*init_player(t_map *map_info)
 	else
 	{
 		init_player_position(map_info, player);
-		printf("y:%f x:%f\n", player->pos_y, player->pos_x);
 		init_player_direction(player);
-		printf("y:%f x:%f\n", player->dir_y, player->dir_x);
 		init_camera_plane(player);
-		printf("y:%f x:%f\n", player->plane_y, player->plane_x);
 	}
 	return (player);
 }
