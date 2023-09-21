@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 15:04:28 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/21 15:43:53 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	check_starting_position(char **map, t_map *map_info)
 		}
 	}
 	if (flag_postion == FALSE)
-		ctrl_error("there is no starting pointn\n");
+		ctrl_error("there is no starting point\n");
 }
 
 int	is_empty_space(char component)

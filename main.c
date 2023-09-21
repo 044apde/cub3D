@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:10:55 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 15:07:13 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/21 15:15:43 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	char	*map_path;
 	t_map	*map_info;
 
-	atexit(test_leak);
+	// atexit(test_leak);
 	if (argc != 2)
 	{
 		show_error("need one map file\n");
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	}
 	map_path = parse_input(argv[1]);
 	map_info = load_file(map_path);
+	execute_cub3d(map_info);
 	free(map_path);
 	free_map_info(map_info);
 	return (0);

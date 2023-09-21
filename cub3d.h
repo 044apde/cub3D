@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 14:35:12 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/21 15:34:32 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,43 +61,47 @@ typedef struct s_map
 }	t_map;
 
 // UTILS
-void	show_error(char *error_message);
-void	ctrl_error(char *error_message);
-void	free_two_dimension_array(char **array);
-int		compare_str(char *str1, char *str2);
-int		open_file(char *map_path);
-char	*trim_path(char *path);
-void	free_map_info(t_map *map_info);
-void	show_map(char **map, t_map *map_info);
+void		show_error(char *error_message);
+void		ctrl_error(char *error_message);
+void		free_two_dimension_array(char **array);
+int			compare_str(char *str1, char *str2);
+int			open_file(char *map_path);
+char		*trim_path(char *path);
+void		free_map_info(t_map *map_info);
+void		show_map(char **map, t_map *map_info);
 
 // PARSE INPUT
-char	*parse_input(char *input);
-char	*make_map_path(char *map_name);
-void	check_map_name(char *map_name);
-void	check_map_file(char *map_path);
+char		*parse_input(char *input);
+char		*make_map_path(char *map_name);
+void		check_map_name(char *map_name);
+void		check_map_file(char *map_path);
 
 // LOAD FILE
-t_map	*load_file(char *map_path);
-t_map	*init_map_info(void);
-void	get_map(t_map *map_info, int fd, char *map_path);
-void	get_texture(t_map *map_info, int fd);
-void	compare_no_path(t_texture *texture, char *path);
-void	compare_so_path(t_texture *texture, char *path);
-void	compare_we_path(t_texture *texture, char *path);
-void	compare_ea_path(t_texture *texture, char *path);
-int		is_texture_identifier(char *str);
-int		is_texture_element(char *line);
-int		is_map_element(char *line);
-void	is_valid_path(int identifier, char *path, t_texture *texture);
-int		set_texture_path(t_map *map_info, char *line);
-char	**make_map_array(t_map *map_info, char *map_path);
-int		is_map_component(char component);
-void	check_starting_position(char **map, t_map *map_info);
-void	check_map_is_closed(char **map, t_map *map_info);
-void	check_north_is_empty(t_map *map_info, char **map, int h, int w);
-void	check_south_is_empty(t_map *map_info, char **map, int h, int w);
-void	check_east_is_empty(t_map *map_info, char **map, int h, int w);
-void	check_west_is_empty(t_map *map_info, char **map, int h, int w);
-int		is_empty_space(char component);
+t_map		*load_file(char *map_path);
+t_map		*init_map_info(void);
+void		get_map(t_map *map_info, int fd, char *map_path);
+void		get_texture(t_map *map_info, int fd);
+void		compare_no_path(t_texture *texture, char *path);
+void		compare_so_path(t_texture *texture, char *path);
+void		compare_we_path(t_texture *texture, char *path);
+void		compare_ea_path(t_texture *texture, char *path);
+int			is_texture_identifier(char *str);
+int			is_texture_element(char *line);
+int			is_map_element(char *line);
+void		is_valid_path(int identifier, char *path, t_texture *texture);
+int			set_texture_path(t_map *map_info, char *line);
+char		**make_map_array(t_map *map_info, char *map_path);
+int			is_map_component(char component);
+void		check_starting_position(char **map, t_map *map_info);
+void		check_map_is_closed(char **map, t_map *map_info);
+void		check_north_is_empty(t_map *map_info, char **map, int h, int w);
+void		check_south_is_empty(t_map *map_info, char **map, int h, int w);
+void		check_east_is_empty(t_map *map_info, char **map, int h, int w);
+void		check_west_is_empty(t_map *map_info, char **map, int h, int w);
+int			is_empty_space(char component);
+
+// CUB3D
+void		execute_cub3d(t_map *map_info);
+t_player	*init_player(t_map *map_info);
 
 #endif
