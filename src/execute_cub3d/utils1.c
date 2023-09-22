@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:19:16 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 16:11:05 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/22 19:56:15 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	init_player_position(t_map *map_info, t_player *player)
 			if (map[h][w] == 'N' || map[h][w] == 'S' || \
 				map[h][w] == 'E' || map[h][w] == 'W')
 			{
-				player->pos_x = w;
-				player->pos_y = h;
+				player->pos_x = w + 0.5;
+				player->pos_y = h + 0.5;
 				player->direction = map[h][w];
 				break ;
 			}
@@ -39,7 +39,7 @@ void	init_player_position(t_map *map_info, t_player *player)
 }
 
 void	init_player_direction(t_player *player)
-{ 
+{
 	if (player->direction == 'N')
 	{
 		player->dir_x = 0;

@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 16:41:30 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/22 21:28:01 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <math.h>
 # include "libft/libft.h"
 # include "src/gnl/get_next_line.h"
 # include "mlx/mlx.h"
@@ -31,6 +32,24 @@
 # define EA 14
 # define F 15
 # define C 16
+
+typedef	struct s_ray
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		map_x;
+	int		map_y;
+}	t_ray;
 
 typedef struct s_window
 {
@@ -112,7 +131,14 @@ int			is_empty_space(char component);
 
 // CUB3D
 void		execute_cub3d(t_map *map_info);
+void		render_graphic(t_map *map_info, t_player *player);
+int			key_hook(int keycode, t_window *window);
 t_player	*init_player(t_map *map_info);
 t_window	*init_window();
+double		absolutilize(double	num);
+void		calculate_side_dist(t_ray *ray, t_player *player);
+void		calculate_ray_dir(t_ray *ray, t_player *player, t_map *map_info, int x);
+void		calculate_where_is_ray_in(t_ray *ray, t_player *player, t_map *map_info);
+void		calculate_delta_dist(t_ray *ray);
 
 #endif

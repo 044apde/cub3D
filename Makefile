@@ -9,7 +9,9 @@ SOURCE		=	main.c \
 				src/load_file/utils3.c src/load_file/utils4.c src/load_file/utils5.c \
 				src/load_file/utils6.c src/load_file/utils7.c \
 				src/gnl/get_next_line.c \
-				src/cub3d/execute_cub3d.c src/cub3d/utils1.c src/cub3d/utils2.c
+				src/execute_cub3d/execute_cub3d.c src/execute_cub3d/utils1.c src/execute_cub3d/utils2.c \
+				src/execute_cub3d/utils3.c src/execute_cub3d/utils4.c src/execute_cub3d/key_hook.c \
+				src/execute_cub3d/render_graphic.c
 HEADER		=	cub3d.h
 LIBRARY 	=	libft/libft.a mlx/libmlx.a
 OBJECT		=	$(SOURCE:.c=.o)

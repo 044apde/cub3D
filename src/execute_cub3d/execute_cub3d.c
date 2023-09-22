@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   execute_cub3d.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 18:10:55 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/22 20:32:56 by shikim           ###   ########.fr       */
+/*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
+/*   Updated: 2023/09/22 21:30:15 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "mlx/mlx.h"
+#include "../../cub3d.h"
 
-void	test_leak(void)
+void	execute_cub3d(t_map *map_info)
 {
-	system("leaks cub3D");
-}
+	t_player	*player;
+	t_window	*window;
 
-int	main(int argc, char **argv)
-{
-	char	*map_path;
-	t_map	*map_info;
-
-	// atexit(test_leak);
-	if (argc != 2)
-	{
-		show_error("need one map file\n");
-		return (1);
-	}
-	map_path = parse_input(argv[1]);
-	map_info = load_file(map_path);
-	execute_cub3d(map_info);
-	free(map_path);
-	free_map_info(map_info);
-	return (0);
+	player = init_player(map_info);
+	window = init_window();
+	mlx_key_hook(window->win, key_hook, window);
+	render_graphic(map_info, player);
+	// mlx_loop(window->mlx);
+	return ;
 }
