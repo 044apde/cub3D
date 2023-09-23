@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:19:16 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/22 19:56:15 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/23 15:49:16 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ void	init_camera_plane(t_player *player)
 	}
 	else if (player->direction == 'S')
 	{
-		player->plane_x = 0.66;
+		player->plane_x = -0.66;
 		player->plane_y = 0;
 	}
 	else if (player->direction == 'E')
 	{
 		player->plane_x = 0;
-		player->plane_y = 0.66;
+		player->plane_y = -0.66;
 	}
 	else if (player->direction == 'W')
 	{

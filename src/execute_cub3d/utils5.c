@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_cub3d.c                                    :+:      :+:    :+:   */
+/*   utils5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/23 16:04:16 by shikim           ###   ########.fr       */
+/*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
+/*   Updated: 2023/09/23 15:56:50 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	execute_cub3d(t_map *map_info)
+void	draw_vertical_line(int x, t_wall *wall, t_window *window)
 {
-	t_player	*player;
-	t_window	*window;
+	int	h;
 
-	player = init_player(map_info);
-	window = init_window();
-	mlx_key_hook(window->win, key_hook, window);
-	render_graphic(map_info, player, window);
-	// mlx_loop(window->mlx);
+	h = wall->draw_start;
+	while (h < wall->draw_end)
+	{
+		mlx_pixel_put(window->mlx, window->win, x, h, 0xFFFFFF);
+		++h;
+	}
 	return ;
 }

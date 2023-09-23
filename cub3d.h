@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/22 21:28:01 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/23 15:38:28 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@
 # define EA 14
 # define F 15
 # define C 16
+
+typedef struct s_wall
+{
+	int	line_height;
+	int	draw_start;
+	int	draw_end;
+}	t_wall;
 
 typedef	struct s_ray
 {
@@ -131,7 +138,7 @@ int			is_empty_space(char component);
 
 // CUB3D
 void		execute_cub3d(t_map *map_info);
-void		render_graphic(t_map *map_info, t_player *player);
+void		render_graphic(t_map *map_info, t_player *player, t_window *win);
 int			key_hook(int keycode, t_window *window);
 t_player	*init_player(t_map *map_info);
 t_window	*init_window();
@@ -140,5 +147,9 @@ void		calculate_side_dist(t_ray *ray, t_player *player);
 void		calculate_ray_dir(t_ray *ray, t_player *player, t_map *map_info, int x);
 void		calculate_where_is_ray_in(t_ray *ray, t_player *player, t_map *map_info);
 void		calculate_delta_dist(t_ray *ray);
+void		 find_wall(t_ray *ray, t_map *map_info);
+void		calculate_distance_to_wall(t_ray *ray, t_player *player);
+void		calculate_wall_height(t_wall *wall, t_ray *ray);
+void		draw_vertical_line(int x, t_wall *wall, t_window *window);
 
 #endif
