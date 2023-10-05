@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 15:08:57 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 12:45:05 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,19 @@ char	**init_map(t_map *map_info)
 	return (map);
 }
 
-void	set_map_component(char **map, char *line)
+void	set_map_component(char **map, char *line, t_map *map_info)
 {
-	static int	height = 0;
-	int			width;
+	int	width;
 
 	width = 0;
 	while (line[width] != '\0' && line[width] != '\n')
 	{
 		if (is_map_component(line[width]) == FALSE)
 			ctrl_error("check map element's component\n");
-		map[height][width] = line[width];
+		map[map_info->count_height - 1][width] = line[width];
 		width++;
 	}
-	height++;
+	map_info->count_height--;
 	return ;
 }
 
@@ -102,6 +101,7 @@ char	**make_map_array(t_map *map_info, char *map_path)
 	line = move_to_map_element(fd);
 	map = init_map(map_info);
 	pre_set_map(map, map_info);
+	map_info->count_height = map_info->height;
 	while (TRUE)
 	{
 		if (line == NULL)
@@ -109,7 +109,7 @@ char	**make_map_array(t_map *map_info, char *map_path)
 		else if (compare_str(line, "\n") == TRUE)
 			;
 		else if (is_map_element(line) == TRUE)
-			set_map_component(map, line);
+			set_map_component(map, line, map_info);
 		else
 			ctrl_error("invalid map element\n");
 		free (line);

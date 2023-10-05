@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/23 15:38:28 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 12:42:30 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,23 @@
 # define TRUE 1
 # define FALSE 0
 # define ERROR -1
-# define WINDOW_HEIGHT 576
-# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 1280
+# define TEXTURE_HEIGHT 32
+# define TEXTURE_WIDTH 32
 # define NO 11
 # define SO 12
 # define WE 13
 # define EA 14
 # define F 15
 # define C 16
+# define NO_VALUE 9999999
+
+typedef struct s_speed
+{
+	double	move_speed;
+	double	rot_speed;
+}	t_speed;
 
 typedef struct s_wall
 {
@@ -91,6 +100,7 @@ typedef struct s_map
 {
 	char		**map;
 	int			height;
+	int			count_height;
 	int			width;
 	t_texture	*texture;
 	t_player	*player;
@@ -150,6 +160,9 @@ void		calculate_delta_dist(t_ray *ray);
 void		 find_wall(t_ray *ray, t_map *map_info);
 void		calculate_distance_to_wall(t_ray *ray, t_player *player);
 void		calculate_wall_height(t_wall *wall, t_ray *ray);
-void		draw_vertical_line(int x, t_wall *wall, t_window *window);
+void		draw_vertical_line(int x, t_wall *wall, t_window *window, t_ray *ray);
+void		draw_background(t_window *window, t_map *map_info);
+double		calculate_wall_x(int side, t_player *player, t_ray *ray);
+int			calculate_tex_x(int side, double wall_x, t_ray *ray);
 
 #endif

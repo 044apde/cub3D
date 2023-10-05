@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:19:16 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/23 15:49:16 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 12:46:40 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	init_player_direction(t_player *player)
 	if (player->direction == 'N')
 	{
 		player->dir_x = 0;
-		player->dir_y = -1;
+		player->dir_y = 1;
 	}
 	else if (player->direction == 'S')
 	{
 		player->dir_x = 0;
-		player->dir_y = 1;
+		player->dir_y = -1;
 	}
 	else if (player->direction == 'E')
 	{

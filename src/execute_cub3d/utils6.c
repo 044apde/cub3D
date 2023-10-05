@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils6.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 16:19:48 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/03 13:38:53 by shikim           ###   ########.fr       */
+/*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
+/*   Updated: 2023/10/03 17:29:59 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-t_window	*init_window(void)
+void	draw_screen(unsigned int *buffer, t_player *player, t_ray *ray, t_wall *wall)
 {
-	t_window	*window;
+	double	wall_x;
+	double	tex_x;
 
-	window = (t_window *)malloc(sizeof(t_window));
-	if (window == NULL)
-		ctrl_error("failed to malloc\n");
-	else
-	{
-		window->time = 0;
-		window->old_time = 0;
-		window->mlx = mlx_init();
-		window->win = mlx_new_window(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "CUB3D");
-	}
-	return (window);
+	wall_x = calculate_wall_x(ray->side, player, ray);
+	tex_x = calculate_tex_x(ray->side, wall_x, ray);
+	fill_buffer(wall, buffer, ray->side, x);
 }

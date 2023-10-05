@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/23 16:04:16 by shikim           ###   ########.fr       */
+/*   Updated: 2023/09/23 17:10:37 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	execute_cub3d(t_map *map_info)
 	window = init_window();
 	mlx_key_hook(window->win, key_hook, window);
 	render_graphic(map_info, player, window);
-	// mlx_loop(window->mlx);
+	mlx_loop(window->mlx);
 	return ;
 }
