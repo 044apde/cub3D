@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:13:41 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 12:23:38 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 22:34:53 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,17 @@ t_ray	*init_ray(void)
 	return (ray);
 }
 
-t_wall	*init_wall(void)
-{
-	t_wall	*wall;
-
-	wall = (t_wall *)malloc(sizeof(t_wall));
-	if (wall == NULL)
-		ctrl_error("falid to malloc\n");
-	return(wall);
-}
-
-void	free_renderm_memory(t_ray *ray, t_wall *wall)
-{
-	free(ray);
-	free(wall);
-	return ;
-}
-
 void	draw_screen(t_map *map_info, t_player *player, t_window *window)
 {
 	int				x;
-	unsigned int	buffer[WINDOW_HEIGHT][WINDOW_WIDTH];
+	t_image			buffer;
 	t_ray			*ray;
-	t_wall			*wall;
 
 	x = -1;
 	ray = init_ray();
-	wall = init_wall();
+	buffer.image = mlx_new_image(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	buffer.addr = mlx_get_data_addr(buffer.image, &buffer.bits_per_pixel, \
+									&buffer.line_length, &buffer.endian);
 	while (++x <= WINDOW_WIDTH)
 	{
 		calculate_ray_dir(ray, player, map_info, x);
@@ -61,15 +45,16 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window)
 		calculate_side_dist(ray, player);
 		find_wall(ray, map_info);
 		calculate_distance_to_wall(ray, player);
-		calculate_wall_height(wall, ray);
-		draw_vertical_line(x, wall, window, ray);
+		calculate_wall_height(ray);
+		fill_buffer(&buffer, player, ray, NULL);
 	}
-	free_renderm_memory(ray, wall);
+	mlx_put_image_to_window(window->mlx, window->win, buffer.image, 0, 0);
+	free(ray);
 }
 
-void	render_graphic(t_map *map_info, t_player *player, t_window *window)
+int	render_graphic(t_temp *temp)
 {
-	draw_background(window, map_info);
-	draw_screen(map_info, player, window);
-	return ;
+	// draw_background(temp->window, temp->map_info);
+	draw_screen(temp->map_info, temp->player, temp->window);
+	return (0);
 }

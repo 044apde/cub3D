@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/03 15:15:34 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 17:19:01 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,26 +81,23 @@ void	calculate_distance_to_wall(t_ray *ray, t_player *player)
 	{
 		ray->perp_wall_dist = (ray->map_x - player->pos_x + \
 		(1 - ray->step_x) / 2) / ray->ray_dir_x;
-		// printf("ray_dir_x:%f perp_wall_dist: %f ", ray->ray_dir_x, ray->perp_wall_dist);
 	}
 	else
 	{
 		ray->perp_wall_dist = (ray->map_y - player->pos_y + \
 		(1 - ray->step_y) / 2) / ray->ray_dir_y;
-		// printf("ray_dir_y:%f perp_wall_dist: %f ", ray->ray_dir_y, ray->perp_wall_dist);
 	}
 	return ;
 }
 
-void	calculate_wall_height(t_wall *wall, t_ray *ray)
+void	calculate_wall_height(t_ray *ray)
 {
-	wall->line_height = (int)(WINDOW_HEIGHT / ray->perp_wall_dist);
-	wall->draw_start = -(wall->line_height) / 2 + WINDOW_HEIGHT / 2;
-	if (wall->draw_start < 0)
-		wall->draw_start = 0;
-	wall->draw_end = wall->line_height / 2 + WINDOW_HEIGHT / 2;
-	if (wall->draw_end >= WINDOW_HEIGHT)
-		wall->draw_end = WINDOW_HEIGHT - 1;
-	// printf("l_height: %d draw_start: %d draw_end: %d\n", wall->line_height, wall->draw_start, wall->draw_end);
+	ray->line_height = (int)(WINDOW_HEIGHT / ray->perp_wall_dist);
+	ray->draw_start = -(ray->line_height) / 2 + WINDOW_HEIGHT / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + WINDOW_HEIGHT / 2;
+	if (ray->draw_end >= WINDOW_HEIGHT)
+		ray->draw_end = WINDOW_HEIGHT - 1;
 	return ;
 }

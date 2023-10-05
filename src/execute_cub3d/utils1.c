@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:19:16 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 12:46:40 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 22:44:03 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_player_position(t_map *map_info, t_player *player)
 			}
 		}
 	}
+	printf("pos_x %f pos_y %f\n", player->pos_x, player->pos_y);
 	return ;
 }
 

@@ -6,18 +6,51 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/03 17:29:59 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 17:51:45 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	draw_screen(unsigned int *buffer, t_player *player, t_ray *ray, t_wall *wall)
+void	my_put_pixel(t_image *buffer, int x, int y, int color)
+{
+	char	*dest;
+
+	dest = buffer->addr + (y * buffer->line_length + x * (buffer->bits_per_pixel / 8));
+	*(unsigned int *)dest = color;
+	return ;
+}
+
+void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_set)
+{
+	int		y;
+	int		tex_y;
+	int		color;
+	double	step;
+	double	tex_pos;
+
+	step = 1.0 * TEXTURE_HEIGHT / ray->line_height;
+	tex_pos = (ray->draw_start - WINDOW_HEIGHT / 2 + ray->line_height / 2) * step;
+	y = ray->draw_start - 1;
+	while (++y < ray->draw_end)
+	{
+		tex_y = (int)tex_pos & (TEXTURE_HEIGHT - 1);
+		tex_pos += step;
+		color = 0x00FF80;
+		if (ray->side == 1)
+			color = 0xD5FF00;
+		my_put_pixel(buffer, ray->x, y, color);
+	}
+	return ;
+}
+
+void	fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *texture_set)
 {
 	double	wall_x;
 	double	tex_x;
 
 	wall_x = calculate_wall_x(ray->side, player, ray);
 	tex_x = calculate_tex_x(ray->side, wall_x, ray);
-	fill_buffer(wall, buffer, ray->side, x);
+	set_pixel_from_texture(buffer, ray, texture_set);
+	return ;
 }

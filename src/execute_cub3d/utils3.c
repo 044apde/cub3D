@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 20:24:07 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/23 16:45:23 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 17:49:12 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	calculate_ray_dir(t_ray *ray, t_player *player, t_map *map_info, int x)
 	ray->camera_x = 2 * (x / (double)WINDOW_WIDTH) - 1;
 	ray->ray_dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
+	ray->x = x;
 	return ;
 }
 

@@ -6,29 +6,11 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 12:25:14 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 18:26:18 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void	draw_vertical_line(int x, t_wall *wall, t_window *window, t_ray *ray)
-{
-	int	h;
-	int	color;
-
-	h = wall->draw_start;
-	if (ray->side == 0)
-		color = 0x009000; // 초록색
-	else
-		color = 0x000080; // 남색
-	while (h < wall->draw_end)
-	{
-		mlx_pixel_put(window->mlx, window->win, x, h, color);
-		++h;
-	}
-	return ;
-}
 
 void	draw_background(t_window *window, t_map	*map_info)
 {

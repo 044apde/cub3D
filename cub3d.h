@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 12:42:30 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/05 23:39:38 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define ERROR -1
 # define WINDOW_HEIGHT 720
 # define WINDOW_WIDTH 1280
-# define TEXTURE_HEIGHT 32
-# define TEXTURE_WIDTH 32
+# define TEXTURE_HEIGHT 16
+# define TEXTURE_WIDTH 16
 # define NO 11
 # define SO 12
 # define WE 13
@@ -35,6 +35,21 @@
 # define F 15
 # define C 16
 # define NO_VALUE 9999999
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define MOVE_SPEED 0.1
+# define ROT_SPEED 0.05
+# define WALL 1
+
+typedef struct s_texture_set
+{
+	char	n_texture[64];
+	char	s_texture[64];
+	char	e_texture[64];
+	char	a_texture[64];
+}	t_texture_set;
 
 typedef struct s_speed
 {
@@ -42,14 +57,7 @@ typedef struct s_speed
 	double	rot_speed;
 }	t_speed;
 
-typedef struct s_wall
-{
-	int	line_height;
-	int	draw_start;
-	int	draw_end;
-}	t_wall;
-
-typedef	struct s_ray
+typedef struct s_ray
 {
 	double	camera_x;
 	double	ray_dir_x;
@@ -65,6 +73,10 @@ typedef	struct s_ray
 	int		side;
 	int		map_x;
 	int		map_y;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		x;
 }	t_ray;
 
 typedef struct s_window
@@ -105,6 +117,22 @@ typedef struct s_map
 	t_texture	*texture;
 	t_player	*player;
 }	t_map;
+
+typedef struct s_image
+{
+	void	*image;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_image;
+
+typedef struct s_temp
+{
+	t_map		*map_info;
+	t_player	*player;
+	t_window	*window;
+}	t_temp;
 
 // UTILS
 void		show_error(char *error_message);
@@ -148,8 +176,8 @@ int			is_empty_space(char component);
 
 // CUB3D
 void		execute_cub3d(t_map *map_info);
-void		render_graphic(t_map *map_info, t_player *player, t_window *win);
-int			key_hook(int keycode, t_window *window);
+int			render_graphic(t_temp *temp);
+int			key_hook(int keycode, t_temp *temp);
 t_player	*init_player(t_map *map_info);
 t_window	*init_window();
 double		absolutilize(double	num);
@@ -159,10 +187,11 @@ void		calculate_where_is_ray_in(t_ray *ray, t_player *player, t_map *map_info);
 void		calculate_delta_dist(t_ray *ray);
 void		 find_wall(t_ray *ray, t_map *map_info);
 void		calculate_distance_to_wall(t_ray *ray, t_player *player);
-void		calculate_wall_height(t_wall *wall, t_ray *ray);
-void		draw_vertical_line(int x, t_wall *wall, t_window *window, t_ray *ray);
+void		calculate_wall_height(t_ray *ray);
 void		draw_background(t_window *window, t_map *map_info);
 double		calculate_wall_x(int side, t_player *player, t_ray *ray);
 int			calculate_tex_x(int side, double wall_x, t_ray *ray);
+void		my_put_pixel(t_image *buffer, int x, int y, int color);
+void		fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *texture_set);
 
 #endif
