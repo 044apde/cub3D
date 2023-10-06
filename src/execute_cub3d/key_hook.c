@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 13:53:47 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:44:10 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	is_movable_place(t_map *map_info, int y, int x)
 	int		map_height;
 	int		map_width;
 
-	printf("go x:%d y:%d\n", x, y);
 	map = map_info->map;
 	map_height = map_info->height;
 	map_width = map_info->width;
+	printf("y:%d x:%d\n", y, x);
 	if ((y >= 0 && y <= map_height) && (x >= 0 && x <= map_width))
 	{
 		if (is_empty_space(map[y][x]) == TRUE)
@@ -64,7 +64,7 @@ void	rotate_player(t_player *player, t_map *map_info, int keycode)
 		old_plane_x =  player->plane_x;
 		player->plane_x = player->plane_x * cos(-ROT_SPEED) - player->plane_y * sin(-ROT_SPEED);
 		player->plane_y = old_plane_x * sin(-ROT_SPEED) + player->plane_y * cos(-ROT_SPEED);
-		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
+		printf("Rotate right\n");
 	}
 	else if (keycode == 123)
 	{
@@ -72,9 +72,9 @@ void	rotate_player(t_player *player, t_map *map_info, int keycode)
 		player->dir_x = player->dir_x * cos(ROT_SPEED) - player->dir_y * sin(ROT_SPEED);
 		player->dir_y = old_dir_x * sin(ROT_SPEED) + player->dir_y * cos(ROT_SPEED);
 		old_plane_x =  player->plane_x;
-		player->plane_x = player->plane_x * cos(-ROT_SPEED) - player->plane_y * sin(ROT_SPEED);
+		player->plane_x = player->plane_x * cos(ROT_SPEED) - player->plane_y * sin(ROT_SPEED);
 		player->plane_y = old_plane_x * sin(ROT_SPEED) + player->plane_y * cos(ROT_SPEED);
-		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
+		printf("Rotate left\n");
 	}
 	return ;
 }
