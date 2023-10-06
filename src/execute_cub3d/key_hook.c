@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 13:10:05 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 13:21:17 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,41 +38,13 @@ int	is_movable_place(t_map *map_info, int y, int x)
 void	move_player(t_player *player, t_map *map_info, int keycode)
 {
 	if (keycode == KEY_W)
-	{
-		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1)]) == TRUE)
-			player->pos_x += player->dir_x * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-		if (is_empty_space(map_info->map[(int)(player->pos_y + player->dir_y * MOVE_SPEED + 0.1)][(int)player->pos_x]) == TRUE)
-			player->pos_y += player->dir_y * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-	}
+		move_forward(player, map_info);
 	else if (keycode == KEY_A)
-	{
-		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x - player->dir_x * MOVE_SPEED - 0.1)]) == TRUE)
-			player->pos_x -= player->dir_y * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-		if (is_empty_space(map_info->map[(int)(player->pos_y + player->dir_y * MOVE_SPEED + 0.1)][(int)player->pos_x]) == TRUE)
-			player->pos_y += player->dir_x * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-	}
+		move_left(player, map_info);
 	else if (keycode == KEY_S)
-	{
-		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x - player->dir_x * MOVE_SPEED - 0.1)]) == TRUE)
-			player->pos_x -= player->dir_x * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-		if (is_empty_space(map_info->map[(int)(player->pos_y - player->dir_y * MOVE_SPEED - 0.1)][(int)player->pos_x]) == TRUE)
-			player->pos_y -= player->dir_y * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-	}
+		move_back(player, map_info);
 	else if (keycode == KEY_D)
-	{
-		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1)]) == TRUE)
-			player->pos_x += player->dir_y * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-		if (is_empty_space(map_info->map[(int)(player->pos_y - player->dir_y * MOVE_SPEED - 0.1)][(int)player->pos_x]) == TRUE)
-			player->pos_y -= player->dir_x * MOVE_SPEED;
-		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
-	}
+		move_right(player, map_info);
 	return ;
 }
 

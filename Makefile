@@ -11,7 +11,7 @@ SOURCE		=	main.c \
 				src/gnl/get_next_line.c \
 				src/execute_cub3d/execute_cub3d.c src/execute_cub3d/utils1.c src/execute_cub3d/utils2.c \
 				src/execute_cub3d/utils3.c src/execute_cub3d/utils4.c src/execute_cub3d/utils5.c \
-				src/execute_cub3d/utils6.c \
+				src/execute_cub3d/utils6.c src/execute_cub3d/utils7.c \
 				src/execute_cub3d/key_hook.c src/execute_cub3d/render_graphic.c
 HEADER		=	cub3d.h
 LIBRARY 	=	libft/libft.a mlx/libmlx.a

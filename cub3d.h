@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 13:15:24 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 13:46:03 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,5 +193,10 @@ double		calculate_wall_x(int side, t_player *player, t_ray *ray);
 int			calculate_tex_x(int side, double wall_x, t_ray *ray);
 void		my_put_pixel(t_image *buffer, int x, int y, int color);
 void		fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *texture_set);
+void		move_forward(t_player *player, t_map *map_info);
+void		move_left(t_player *player, t_map *map_info);
+void		move_back(t_player *player, t_map *map_info);
+void		move_right(t_player *player, t_map *map_info);
+int			is_movable_place(t_map *map_info, int y, int x);
 
 #endif
