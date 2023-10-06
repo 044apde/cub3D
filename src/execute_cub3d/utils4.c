@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 17:19:01 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:24:23 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	calculate_side_dist(t_ray *ray, t_player *player)
 		else
 			ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_dist_y;
 	}
-	// printf("side_dist_x: %f side_dist_y: %f ", ray->side_dist_x, ray->side_dist_y);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 15:44:10 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:26:12 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	is_movable_place(t_map *map_info, int y, int x)
 	map = map_info->map;
 	map_height = map_info->height;
 	map_width = map_info->width;
-	printf("y:%d x:%d\n", y, x);
 	if ((y >= 0 && y <= map_height) && (x >= 0 && x <= map_width))
 	{
 		if (is_empty_space(map[y][x]) == TRUE)
@@ -51,30 +50,28 @@ void	move_player(t_player *player, t_map *map_info, int keycode)
 	return ;
 }
 
-void	rotate_player(t_player *player, t_map *map_info, int keycode)
+void	rotate_player(t_player *p, t_map *map_info, int keycode)
 {
 	double	old_dir_x;
 	double	old_plane_x;
 
 	if (keycode == 124)
 	{
-		old_dir_x = player->dir_x;
-		player->dir_x = player->dir_x * cos(-ROT_SPEED) - player->dir_y * sin(-ROT_SPEED);
-		player->dir_y = old_dir_x * sin(-ROT_SPEED) + player->dir_y * cos(-ROT_SPEED);
-		old_plane_x =  player->plane_x;
-		player->plane_x = player->plane_x * cos(-ROT_SPEED) - player->plane_y * sin(-ROT_SPEED);
-		player->plane_y = old_plane_x * sin(-ROT_SPEED) + player->plane_y * cos(-ROT_SPEED);
-		printf("Rotate right\n");
+		old_dir_x = p->dir_x;
+		p->dir_x = p->dir_x * cos(-ROTSPEED) - p->dir_y * sin(-ROTSPEED);
+		p->dir_y = old_dir_x * sin(-ROTSPEED) + p->dir_y * cos(-ROTSPEED);
+		old_plane_x = p->plane_x;
+		p->plane_x = p->plane_x * cos(-ROTSPEED) - p->plane_y * sin(-ROTSPEED);
+		p->plane_y = old_plane_x * sin(-ROTSPEED) + p->plane_y * cos(-ROTSPEED);
 	}
 	else if (keycode == 123)
 	{
-		old_dir_x = player->dir_x;
-		player->dir_x = player->dir_x * cos(ROT_SPEED) - player->dir_y * sin(ROT_SPEED);
-		player->dir_y = old_dir_x * sin(ROT_SPEED) + player->dir_y * cos(ROT_SPEED);
-		old_plane_x =  player->plane_x;
-		player->plane_x = player->plane_x * cos(ROT_SPEED) - player->plane_y * sin(ROT_SPEED);
-		player->plane_y = old_plane_x * sin(ROT_SPEED) + player->plane_y * cos(ROT_SPEED);
-		printf("Rotate left\n");
+		old_dir_x = p->dir_x;
+		p->dir_x = p->dir_x * cos(ROTSPEED) - p->dir_y * sin(ROTSPEED);
+		p->dir_y = old_dir_x * sin(ROTSPEED) + p->dir_y * cos(ROTSPEED);
+		old_plane_x = p->plane_x;
+		p->plane_x = p->plane_x * cos(ROTSPEED) - p->plane_y * sin(ROTSPEED);
+		p->plane_y = old_plane_x * sin(ROTSPEED) + p->plane_y * cos(ROTSPEED);
 	}
 	return ;
 }
@@ -88,10 +85,10 @@ int	key_hook(int keycode, t_render *temp)
 
 	map_info = temp->map_info;
 	player = temp->player;
-	printf("keycode: %d\n", keycode);
 	if (keycode == 53)
 		end_cub3d();
-	else if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S || keycode == KEY_D)
+	else if (keycode == KEY_W || keycode == KEY_A \
+			|| keycode == KEY_S || keycode == KEY_D)
 		move_player(player, map_info, keycode);
 	else if (keycode == 124 || keycode == 123)
 		rotate_player(player, map_info, keycode);

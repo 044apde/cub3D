@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 13:10:23 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:20:15 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	execute_cub3d(t_map *map_info)
 	player = init_player(map_info);
 	window = init_window();
 	render = init_render(player, window, map_info);
-	mlx_hook(window->win, 2, 1L<<0, key_hook, render);
+	mlx_hook(window->win, 2, 1L << 0, key_hook, render);
 	mlx_loop_hook(window->mlx, render_graphic, render);
 	mlx_loop(window->mlx);
 	free(player);

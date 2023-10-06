@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:13:41 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 15:18:24 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:23:10 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window)
 int	render_graphic(t_render *render)
 {
 	// draw_background(render->window, render->map_info);
-	mlx_string_put(render->window->mlx, render->window->win, 100, 100, 0xffffff, "hi");
 	draw_screen(render->map_info, render->player, render->window);
 	return (0);
 }

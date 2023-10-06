@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 13:57:05 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:24:43 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define KEY_S 1
 # define KEY_D 2
 # define MOVE_SPEED 0.05
-# define ROT_SPEED 0.1
+# define ROTSPEED 0.1
 # define WALL 1
 
 typedef struct s_texture_set
