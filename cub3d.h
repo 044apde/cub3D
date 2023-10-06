@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 17:24:43 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 23:36:30 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define ERROR -1
 # define WINDOW_HEIGHT 720
 # define WINDOW_WIDTH 1280
-# define TEXTURE_HEIGHT 16
-# define TEXTURE_WIDTH 16
+# define TEXTURE_HEIGHT 32
+# define TEXTURE_WIDTH 32
 # define NO 11
 # define SO 12
 # define WE 13
@@ -45,10 +45,10 @@
 
 typedef struct s_texture_set
 {
-	char	n_texture[64];
-	char	s_texture[64];
-	char	e_texture[64];
-	char	a_texture[64];
+	int	*n_texture;
+	int	*s_texture;
+	int	*e_texture;
+	int	*w_texture;
 }	t_texture_set;
 
 typedef struct s_speed
@@ -98,7 +98,7 @@ typedef struct s_player
 	char	direction;
 }	t_player;
 
-typedef struct s_texture
+typedef struct s_texture_path
 {
 	char	*no_path;
 	char	*so_path;
@@ -129,9 +129,10 @@ typedef struct s_image
 
 typedef struct s_render
 {
-	t_map		*map_info;
-	t_player	*player;
-	t_window	*window;
+	t_map			*map_info;
+	t_player		*player;
+	t_window		*window;
+	t_texture_set	*texture_set;
 }	t_render;
 
 // UTILS
@@ -173,6 +174,7 @@ void		check_south_is_empty(t_map *map_info, char **map, int h, int w);
 void		check_east_is_empty(t_map *map_info, char **map, int h, int w);
 void		check_west_is_empty(t_map *map_info, char **map, int h, int w);
 int			is_empty_space(char component);
+void		trim_texture_path(t_map *map_info);
 
 // CUB3D
 void		execute_cub3d(t_map *map_info);

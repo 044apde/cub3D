@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 00:20:30 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 23:40:10 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	my_put_pixel(t_image *buffer, int x, int y, int color)
 	return ;
 }
 
-void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_set)
+void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_set, int tex_x)
 {
 	int		y;
 	int		tex_y;
@@ -38,15 +38,15 @@ void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_
 		tex_pos += step;
 		if (ray->side == 0)
 		{
-			color = 0xFFFF00;
+			color = texture_set->w_texture[TEXTURE_HEIGHT * tex_y + tex_x];;
 			if (ray->step_x > 0)
-				color = 0x8b00ff;
+				color = texture_set->e_texture[TEXTURE_HEIGHT * tex_y + tex_x];;
 		}
 		if (ray->side == 1)
 		{
-			color = 0xff00000;
+			color = texture_set->s_texture[TEXTURE_HEIGHT * tex_y + tex_x];
 			if (ray->step_y > 0)
-				color = 0x0067a3;
+				color = texture_set->n_texture[TEXTURE_HEIGHT * tex_y + tex_x];
 		}
 		my_put_pixel(buffer, ray->x, y, color);
 	}
@@ -60,6 +60,6 @@ void	fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *t
 
 	wall_x = calculate_wall_x(ray->side, player, ray);
 	tex_x = calculate_tex_x(ray->side, wall_x, ray);
-	set_pixel_from_texture(buffer, ray, texture_set);
+	set_pixel_from_texture(buffer, ray, texture_set, tex_x);
 	return ;
 }

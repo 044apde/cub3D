@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:11:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/20 14:11:05 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 22:55:31 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_map	*load_file(char *map_path)
 	map_info = init_map_info();
 	get_texture(map_info, fd);
 	get_map(map_info, fd, map_path);
+	trim_texture_path(map_info);
 	return (map_info);
 }

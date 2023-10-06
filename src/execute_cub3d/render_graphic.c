@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:13:41 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 17:23:10 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 23:34:14 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_ray	*init_ray(void)
 	return (ray);
 }
 
-void	draw_screen(t_map *map_info, t_player *player, t_window *window)
+void	draw_screen(t_map *map_info, t_player *player, t_window *window, t_texture_set *texture_set)
 {
 	int				x;
 	t_image			buffer;
@@ -46,7 +46,7 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window)
 		find_wall(ray, map_info);
 		calculate_distance_to_wall(ray, player);
 		calculate_wall_height(ray);
-		fill_buffer(&buffer, player, ray, NULL);
+		fill_buffer(&buffer, player, ray, texture_set);
 	}
 	mlx_put_image_to_window(window->mlx, window->win, buffer.image, 0, 0);
 	free(ray);
@@ -55,6 +55,6 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window)
 int	render_graphic(t_render *render)
 {
 	// draw_background(render->window, render->map_info);
-	draw_screen(render->map_info, render->player, render->window);
+	draw_screen(render->map_info, render->player, render->window, render->texture_set);
 	return (0);
 }
