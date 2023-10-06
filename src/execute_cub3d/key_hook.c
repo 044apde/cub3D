@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 13:21:17 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 13:53:47 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ int	is_movable_place(t_map *map_info, int y, int x)
 	int		map_height;
 	int		map_width;
 
+	printf("go x:%d y:%d\n", x, y);
 	map = map_info->map;
 	map_height = map_info->height;
 	map_width = map_info->width;
 	if ((y >= 0 && y <= map_height) && (x >= 0 && x <= map_width))
 	{
 		if (is_empty_space(map[y][x]) == TRUE)
+		{
 			return (TRUE);
+		}
 	}
 	return (FALSE);
 }
