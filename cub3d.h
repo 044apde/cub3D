@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 23:39:38 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 13:15:24 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define KEY_S 1
 # define KEY_D 2
 # define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define ROT_SPEED 0.1
 # define WALL 1
 
 typedef struct s_texture_set
@@ -127,12 +127,12 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-typedef struct s_temp
+typedef struct s_render
 {
 	t_map		*map_info;
 	t_player	*player;
 	t_window	*window;
-}	t_temp;
+}	t_render;
 
 // UTILS
 void		show_error(char *error_message);
@@ -176,8 +176,8 @@ int			is_empty_space(char component);
 
 // CUB3D
 void		execute_cub3d(t_map *map_info);
-int			render_graphic(t_temp *temp);
-int			key_hook(int keycode, t_temp *temp);
+int			render_graphic(t_render *temp);
+int			key_hook(int keycode, t_render *temp);
 t_player	*init_player(t_map *map_info);
 t_window	*init_window();
 double		absolutilize(double	num);

@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 23:47:37 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 13:10:05 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,39 +18,60 @@ void	end_cub3d(void)
 	exit(0);
 }
 
+int	is_movable_place(t_map *map_info, int y, int x)
+{
+	char	**map;
+	int		map_height;
+	int		map_width;
+
+	map = map_info->map;
+	map_height = map_info->height;
+	map_width = map_info->width;
+	if ((y >= 0 && y <= map_height) && (x >= 0 && x <= map_width))
+	{
+		if (is_empty_space(map[y][x]) == TRUE)
+			return (TRUE);
+	}
+	return (FALSE);
+}
+
 void	move_player(t_player *player, t_map *map_info, int keycode)
 {
 	if (keycode == KEY_W)
 	{
-		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
-		if (map_info->map[(int)player->pos_y][(int)(player->pos_x + player->dir_x * MOVE_SPEED)] != WALL)
+		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1)]) == TRUE)
 			player->pos_x += player->dir_x * MOVE_SPEED;
-		if (map_info->map[(int)(player->pos_y + player->dir_y * MOVE_SPEED)][(int)player->pos_x] != WALL)
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
+		if (is_empty_space(map_info->map[(int)(player->pos_y + player->dir_y * MOVE_SPEED + 0.1)][(int)player->pos_x]) == TRUE)
 			player->pos_y += player->dir_y * MOVE_SPEED;
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
 	}
 	else if (keycode == KEY_A)
 	{
-		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
-		if (map_info->map[(int)player->pos_y][(int)(player->pos_x - player->dir_x * MOVE_SPEED)] != WALL)
+		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x - player->dir_x * MOVE_SPEED - 0.1)]) == TRUE)
 			player->pos_x -= player->dir_y * MOVE_SPEED;
-		if (map_info->map[(int)(player->pos_y + player->dir_y * MOVE_SPEED)][(int)player->pos_x] != WALL)
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
+		if (is_empty_space(map_info->map[(int)(player->pos_y + player->dir_y * MOVE_SPEED + 0.1)][(int)player->pos_x]) == TRUE)
 			player->pos_y += player->dir_x * MOVE_SPEED;
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
 	}
 	else if (keycode == KEY_S)
 	{
-		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
-		if (map_info->map[(int)player->pos_y][(int)(player->pos_x - player->dir_x * MOVE_SPEED)] != WALL)
+		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x - player->dir_x * MOVE_SPEED - 0.1)]) == TRUE)
 			player->pos_x -= player->dir_x * MOVE_SPEED;
-		if (map_info->map[(int)(player->pos_y - player->dir_y * MOVE_SPEED)][(int)player->pos_x] != WALL)
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
+		if (is_empty_space(map_info->map[(int)(player->pos_y - player->dir_y * MOVE_SPEED - 0.1)][(int)player->pos_x]) == TRUE)
 			player->pos_y -= player->dir_y * MOVE_SPEED;
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
 	}
 	else if (keycode == KEY_D)
 	{
-		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
-		if (map_info->map[(int)player->pos_y][(int)(player->pos_x + player->dir_x * MOVE_SPEED)] != WALL)
+		if (is_empty_space(map_info->map[(int)player->pos_y][(int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1)]) == TRUE)
 			player->pos_x += player->dir_y * MOVE_SPEED;
-		if (map_info->map[(int)(player->pos_y - player->dir_y * MOVE_SPEED)][(int)player->pos_x] != WALL)
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
+		if (is_empty_space(map_info->map[(int)(player->pos_y - player->dir_y * MOVE_SPEED - 0.1)][(int)player->pos_x]) == TRUE)
 			player->pos_y -= player->dir_x * MOVE_SPEED;
+		printf("%d %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED + 0.1));
 	}
 	return ;
 }
@@ -68,6 +89,7 @@ void	rotate_player(t_player *player, t_map *map_info, int keycode)
 		old_plane_x =  player->plane_x;
 		player->plane_x = player->plane_x * cos(-ROT_SPEED) - player->plane_y * sin(-ROT_SPEED);
 		player->plane_y = old_plane_x * sin(-ROT_SPEED) + player->plane_y * cos(-ROT_SPEED);
+		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
 	}
 	else if (keycode == 123)
 	{
@@ -77,11 +99,12 @@ void	rotate_player(t_player *player, t_map *map_info, int keycode)
 		old_plane_x =  player->plane_x;
 		player->plane_x = player->plane_x * cos(-ROT_SPEED) - player->plane_y * sin(ROT_SPEED);
 		player->plane_y = old_plane_x * sin(ROT_SPEED) + player->plane_y * cos(ROT_SPEED);
+		printf("y: %d x: %d\n", (int)player->pos_y, (int)(player->pos_x + player->dir_x * MOVE_SPEED));
 	}
 	return ;
 }
 
-int	key_hook(int keycode, t_temp *temp)
+int	key_hook(int keycode, t_render *temp)
 {
 	t_map		*map_info;
 	t_player	*player;

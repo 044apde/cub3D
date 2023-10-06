@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:13:41 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 22:34:53 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/06 13:10:33 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window)
 	free(ray);
 }
 
-int	render_graphic(t_temp *temp)
+int	render_graphic(t_render *render)
 {
-	// draw_background(temp->window, temp->map_info);
-	draw_screen(temp->map_info, temp->player, temp->window);
+	// draw_background(render->window, render->map_info);
+	mlx_string_put(render->window->mlx, render->window->win, 100, 100, 0xffffff, "hi");
+	draw_screen(render->map_info, render->player, render->window);
 	return (0);
 }
