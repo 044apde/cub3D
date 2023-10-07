@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:36:47 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 23:48:45 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,23 @@ double	calculate_wall_x(int side, t_player *player, t_ray *ray)
 	return (wall_x);
 }
 
-int	calculate_tex_x(int side, double wall_x, t_ray *ray)
+int	calculate_tex_x(int side, double wall_x, t_ray *ray, t_texture_set *texture_set)
 {
 	int	tex_x;
 
-	tex_x = (int)(wall_x * (double)(TEXTURE_WIDTH));
-	if(side == 0 && ray->ray_dir_x > 0)
-		tex_x = TEXTURE_WIDTH - tex_x - 1;
-	if(side == 1 && ray->ray_dir_y < 0)
-		tex_x = TEXTURE_WIDTH - tex_x - 1;
+	if (side == 0)
+	{
+		if (ray->step_x < 0)
+			tex_x = texture_set->e_texture->width - (int)(wall_x * (double)(texture_set->e_texture->width)) - 1;
+		else
+			tex_x = (int)(wall_x * (double)(texture_set->w_texture->width));
+	}
+	else
+	{
+		if (ray->step_y < 0)
+			tex_x = texture_set->s_texture->width - (int)(wall_x * (double)(texture_set->s_texture->width)) - 1;
+		else
+			tex_x = (int)(wall_x * (double)(texture_set->n_texture->width));
+	}
 	return (tex_x);
 }

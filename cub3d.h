@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:46:42 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 23:19:26 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define ERROR -1
 # define WINDOW_HEIGHT 720
 # define WINDOW_WIDTH 1280
-# define TEXTURE_HEIGHT 32
-# define TEXTURE_WIDTH 32
+# define TEXTURE_HEIGHT 64
+# define TEXTURE_WIDTH 64
 # define NO 11
 # define SO 12
 # define WE 13
@@ -39,8 +39,8 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
-# define MOVE_SPEED 0.05
-# define ROTSPEED 0.1
+# define MOVE_SPEED 0.1
+# define ROTSPEED 0.2
 # define WALL 1
 
 typedef struct s_texture_info
@@ -208,11 +208,11 @@ void		calculate_side_dist(t_ray *ray, t_player *player);
 void		calculate_ray_dir(t_ray *ray, t_player *player, t_map *map_info, int x);
 void		calculate_where_is_ray_in(t_ray *ray, t_player *player, t_map *map_info);
 void		calculate_delta_dist(t_ray *ray);
-void		 find_wall(t_ray *ray, t_map *map_info);
+void		find_wall(t_ray *ray, t_map *map_info);
 void		calculate_distance_to_wall(t_ray *ray, t_player *player);
 void		calculate_wall_height(t_ray *ray);
 double		calculate_wall_x(int side, t_player *player, t_ray *ray);
-int			calculate_tex_x(int side, double wall_x, t_ray *ray);
+int			calculate_tex_x(int side, double wall_x, t_ray *ray, t_texture_set *texture_set);
 void		my_put_pixel(t_image *buffer, int x, int y, int color);
 void		fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *texture_set);
 void		move_forward(t_player *player, t_map *map_info);

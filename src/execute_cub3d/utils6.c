@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 14:16:06 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 23:40:50 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,27 @@ void	my_put_pixel(t_image *buffer, int x, int y, int color)
 	return ;
 }
 
+int	get_texture_height(t_ray *ray, t_texture_set *texture_set)
+{
+	int	height;
+
+	if (ray->side == 0)
+	{
+		if (ray->step_x > 0)
+			height = texture_set->e_texture->height;
+		else
+			height = texture_set->w_texture->height;
+	}
+	else
+	{
+		if (ray->step_y > 0)
+			height = texture_set->s_texture->height;
+		else
+			height = texture_set->n_texture->height;
+	}
+	return (height);
+}
+
 void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_set, int tex_x)
 {
 	int		y;
@@ -29,12 +50,12 @@ void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_
 	double	step;
 	double	tex_pos;
 
-	step = 1.0 * TEXTURE_HEIGHT / ray->line_height;
+	step = 1.0 * get_texture_height(ray, texture_set) / ray->line_height;
 	tex_pos = (ray->draw_start - WINDOW_HEIGHT / 2 + ray->line_height / 2) * step;
 	y = ray->draw_start - 1;
 	while (++y < ray->draw_end)
 	{
-		tex_y = (int)tex_pos & (TEXTURE_HEIGHT - 1);
+		tex_y = (int)tex_pos & (get_texture_height(ray, texture_set) - 1);
 		tex_pos += step;
 		if (ray->side == 0)
 		{
@@ -58,7 +79,7 @@ void	fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *t
 	double	tex_x;
 
 	wall_x = calculate_wall_x(ray->side, player, ray);
-	tex_x = calculate_tex_x(ray->side, wall_x, ray);
+	tex_x = calculate_tex_x(ray->side, wall_x, ray, texture_set);
 	draw_background(buffer, ray, texture_set);
 	set_pixel_from_texture(buffer, ray, texture_set, tex_x);
 	return ;

@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 14:05:42 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 23:44:19 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_texture_info	*open_texture(char *texture_path, t_window *window)
 	if (texture == NULL)
 		ctrl_error("wrong texture");
 	data.image = mlx_xpm_file_to_image(window->mlx, texture_path, &texture->width, &texture->height);
+	printf("%d %d\n", texture->width, texture->height);
 	if (data.image == NULL)
 		ctrl_error("wrong texture");
 	data.temp =  (int *)mlx_get_data_addr(data.image, &data.bpp, &data.line_size, &data.endian);
