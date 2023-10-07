@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 23:40:10 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:09:26 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_
 		tex_pos += step;
 		if (ray->side == 0)
 		{
-			color = texture_set->w_texture[TEXTURE_HEIGHT * tex_y + tex_x];;
+			color = texture_set->w_texture->data[TEXTURE_HEIGHT * tex_y + tex_x];;
 			if (ray->step_x > 0)
-				color = texture_set->e_texture[TEXTURE_HEIGHT * tex_y + tex_x];;
+				color = texture_set->e_texture->data[TEXTURE_HEIGHT * tex_y + tex_x];;
 		}
 		if (ray->side == 1)
 		{
-			color = texture_set->s_texture[TEXTURE_HEIGHT * tex_y + tex_x];
+			color = texture_set->s_texture->data[TEXTURE_HEIGHT * tex_y + tex_x];
 			if (ray->step_y > 0)
-				color = texture_set->n_texture[TEXTURE_HEIGHT * tex_y + tex_x];
+				color = texture_set->n_texture->data[TEXTURE_HEIGHT * tex_y + tex_x];
 		}
 		my_put_pixel(buffer, ray->x, y, color);
 	}

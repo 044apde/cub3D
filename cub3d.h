@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 23:36:30 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:18:56 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,33 @@
 # define ROTSPEED 0.1
 # define WALL 1
 
+typedef struct s_texture_info
+{
+	int	*data;
+	int	width;
+	int	height;
+}	t_texture_info;
+
+typedef struct s_temp_data
+{
+	void	*image;
+	int		*texture;
+    int		width;
+    int		height;
+	int		bpp;
+	int		line_size;
+	int		endian;
+	int		*temp;
+}	t_temp_data;
+
 typedef struct s_texture_set
 {
-	int	*n_texture;
-	int	*s_texture;
-	int	*e_texture;
-	int	*w_texture;
+	t_texture_info	*n_texture;
+	t_texture_info	*s_texture;
+	t_texture_info	*e_texture;
+	t_texture_info	*w_texture;
+	int				ceil;
+	int				floor;
 }	t_texture_set;
 
 typedef struct s_speed
@@ -200,5 +221,6 @@ void		move_left(t_player *player, t_map *map_info);
 void		move_back(t_player *player, t_map *map_info);
 void		move_right(t_player *player, t_map *map_info);
 int			is_movable_place(t_map *map_info, int y, int x);
+int			create_trgb(char *color_string);
 
 #endif

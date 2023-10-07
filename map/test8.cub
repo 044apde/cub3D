@@ -1,7 +1,7 @@
-NO   texture/no_texture
-SO     texture/so_texture
-WE       texture/we_texture
-EA        texture/ea_texture
+NO   texture/redbrick.xpm
+SO     texture/wood.xpm
+WE       texture/pillar.xpm
+EA        texture/purplestone.xpm
 
 F 220,100,0
 C 225,30,0
