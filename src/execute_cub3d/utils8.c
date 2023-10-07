@@ -6,13 +6,13 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 13:15:24 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:27:28 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:36:06 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	check_seperator(char *color_string)
+static int	check_seperator(char *color_string)
 {
 	int	i;
 	int	count;
@@ -32,6 +32,20 @@ int	check_seperator(char *color_string)
 	return (TRUE);
 }
 
+static int	check_array_number(char **array)
+{
+	int	count;
+
+	count = 0;
+	while (array[count] != NULL)
+	{
+		++count;
+	}
+	if (count != 3)
+		return (FALSE);
+	return (TRUE);
+}
+
 int	create_trgb(char *color_string)
 {
 	int		r;
@@ -42,8 +56,30 @@ int	create_trgb(char *color_string)
 	if (check_seperator(color_string) == FALSE)
 		ctrl_error("color string is invalid\n");
 	color_code = ft_split(color_string, ',');
+	if (check_array_number(color_code) == FALSE)
+		ctrl_error("color string is invalid\n");
 	r = ft_atoi(color_code[0]);
 	g = ft_atoi(color_code[1]);
 	b = ft_atoi(color_code[2]);
 	return (0 << 24 | r << 16 | g << 8 | b);
+}
+
+void	draw_background(t_image *buffer, t_ray *ray, t_texture_set *texture_set)
+{
+	int	y;
+	int	color;
+
+	y = -1;
+	while (++y < ray->draw_start)
+	{
+		color = texture_set->ceil;
+		my_put_pixel(buffer, ray->x, y, color);
+	}
+	y = ray->draw_end;
+	while (++y < WINDOW_HEIGHT)
+	{
+		color = texture_set->floor;
+		my_put_pixel(buffer, ray->x, y, color);
+	}
+	return ;
 }

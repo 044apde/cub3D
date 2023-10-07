@@ -6,50 +6,11 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 18:26:18 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:36:47 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void	draw_background(t_window *window, t_map	*map_info)
-{
-	void	*mlx;
-	void	*img;
-	char	*relative_path = "texture/sky.xpm";
-	int		img_width;
-	int		img_height;
-	int		x;
-	int		y;
-
-	mlx = mlx_init();
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	y = 0;
-	while (y < WINDOW_HEIGHT)
-	{
-		x = 0;
-		while (x < WINDOW_WIDTH)
-		{
-			mlx_put_image_to_window(window->mlx, window->win, img, x, y);
-			x += img_width;
-		}
-		y += img_height;
-	}
-	relative_path = "texture/floor.xpm";
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	y = WINDOW_HEIGHT / 2;
-	while (y < WINDOW_HEIGHT)
-	{
-		x = 0;
-		while (x < WINDOW_WIDTH)
-		{
-			mlx_put_image_to_window(window->mlx, window->win, img, x, y);
-			x += img_width;
-		}
-		y += img_height;
-	}
-	return ;
-}
 
 double	calculate_wall_x(int side, t_player *player, t_ray *ray)
 {

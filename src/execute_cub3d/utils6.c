@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:09:26 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:36:33 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_
 		}
 		my_put_pixel(buffer, ray->x, y, color);
 	}
-	return ;
 }
 
 void	fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *texture_set)
@@ -60,6 +59,7 @@ void	fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *t
 
 	wall_x = calculate_wall_x(ray->side, player, ray);
 	tex_x = calculate_tex_x(ray->side, wall_x, ray);
+	draw_background(buffer, ray, texture_set);
 	set_pixel_from_texture(buffer, ray, texture_set, tex_x);
 	return ;
 }

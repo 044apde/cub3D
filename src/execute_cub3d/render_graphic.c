@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:13:41 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:10:29 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:33:52 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window, t_texture_
 
 int	render_graphic(t_render *render)
 {
-	// draw_background(render->window, render->map_info);
 	draw_screen(render->map_info, render->player, render->window, render->texture_set);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:18:56 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 13:36:16 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,6 @@ void		calculate_delta_dist(t_ray *ray);
 void		 find_wall(t_ray *ray, t_map *map_info);
 void		calculate_distance_to_wall(t_ray *ray, t_player *player);
 void		calculate_wall_height(t_ray *ray);
-void		draw_background(t_window *window, t_map *map_info);
 double		calculate_wall_x(int side, t_player *player, t_ray *ray);
 int			calculate_tex_x(int side, double wall_x, t_ray *ray);
 void		my_put_pixel(t_image *buffer, int x, int y, int color);
@@ -222,5 +221,6 @@ void		move_back(t_player *player, t_map *map_info);
 void		move_right(t_player *player, t_map *map_info);
 int			is_movable_place(t_map *map_info, int y, int x);
 int			create_trgb(char *color_string);
+void		draw_background(t_image *buffer, t_ray *ray, t_texture_set *texture_set);
 
 #endif
