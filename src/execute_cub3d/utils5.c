@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 23:48:45 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 00:05:39 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	calculate_tex_x(int side, double wall_x, t_ray *ray, t_texture_set *texture_
 
 	if (side == 0)
 	{
-		if (ray->step_x < 0)
+		if (ray->ray_dir_x > 0)
 			tex_x = texture_set->e_texture->width - (int)(wall_x * (double)(texture_set->e_texture->width)) - 1;
 		else
 			tex_x = (int)(wall_x * (double)(texture_set->w_texture->width));
 	}
 	else
 	{
-		if (ray->step_y < 0)
+		if (ray->ray_dir_y < 0)
 			tex_x = texture_set->s_texture->width - (int)(wall_x * (double)(texture_set->s_texture->width)) - 1;
 		else
 			tex_x = (int)(wall_x * (double)(texture_set->n_texture->width));

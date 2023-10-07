@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 23:44:19 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 00:11:51 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_texture_info	*open_texture(char *texture_path, t_window *window)
 	if (texture == NULL)
 		ctrl_error("wrong texture");
 	data.image = mlx_xpm_file_to_image(window->mlx, texture_path, &texture->width, &texture->height);
-	printf("%d %d\n", texture->width, texture->height);
 	if (data.image == NULL)
 		ctrl_error("wrong texture");
+	printf("%d %d\n", texture->width, texture->height);
 	data.temp =  (int *)mlx_get_data_addr(data.image, &data.bpp, &data.line_size, &data.endian);
 	texture->data = (int *)malloc(sizeof(int) * (texture->width * texture->height));
 	row = -1;
@@ -38,7 +38,7 @@ t_texture_info	*open_texture(char *texture_path, t_window *window)
 	return (texture);
 }
 
-t_texture_set	*init_texture_set(t_map *map_info, t_window *window)
+t_texture_set	*init_texture_set(t_map *map_info, t_window *win)
 {
 	t_texture_set	*texture_set;
 
@@ -47,13 +47,13 @@ t_texture_set	*init_texture_set(t_map *map_info, t_window *window)
 		ctrl_error("failed to malloc\n");
 	else
 	{
-		texture_set->n_texture = open_texture(map_info->texture->no_path, window);
-		texture_set->s_texture = open_texture(map_info->texture->so_path, window);
-		texture_set->e_texture = open_texture(map_info->texture->ea_path, window);
-		texture_set->w_texture = open_texture(map_info->texture->we_path, window);
+		texture_set->n_texture = open_texture(map_info->texture->no_path, win);
+		texture_set->s_texture = open_texture(map_info->texture->so_path, win);
+		texture_set->e_texture = open_texture(map_info->texture->ea_path, win);
+		texture_set->w_texture = open_texture(map_info->texture->we_path, win);
 		texture_set->ceil = create_trgb(map_info->texture->c_color);
 		texture_set->floor = create_trgb(map_info->texture->f_color);
-	} 
+	}
 	return (texture_set);
 }
 

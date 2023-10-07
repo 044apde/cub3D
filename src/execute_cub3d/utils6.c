@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 23:40:50 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 00:16:13 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	get_texture_height(t_ray *ray, t_texture_set *texture_set)
 
 	if (ray->side == 0)
 	{
-		if (ray->step_x > 0)
+		if (ray->ray_dir_x > 0)
 			height = texture_set->e_texture->height;
 		else
 			height = texture_set->w_texture->height;
 	}
 	else
 	{
-		if (ray->step_y > 0)
+		if (ray->ray_dir_y < 0)
 			height = texture_set->s_texture->height;
 		else
 			height = texture_set->n_texture->height;
@@ -60,13 +60,13 @@ void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_
 		if (ray->side == 0)
 		{
 			color = texture_set->w_texture->data[texture_set->w_texture->height * tex_y + tex_x];;
-			if (ray->step_x > 0)
+			if (ray->ray_dir_x > 0)
 				color = texture_set->e_texture->data[texture_set->e_texture->height * tex_y + tex_x];;
 		}
 		if (ray->side == 1)
 		{
 			color = texture_set->s_texture->data[texture_set->s_texture->height * tex_y + tex_x];
-			if (ray->step_y > 0)
+			if (ray->ray_dir_y > 0)
 				color = texture_set->n_texture->data[texture_set->n_texture->height * tex_y + tex_x];
 		}
 		my_put_pixel(buffer, ray->x, y, color);

@@ -1,7 +1,8 @@
-NO   texture/redbrick.xpm
+NO   texture/decor_8x8.xpm
 SO     texture/wood.xpm
 WE       texture/mossy.xpm
 EA        texture/greystone.xpm
+
 
 F           128,128,128
 C          0,127,255
