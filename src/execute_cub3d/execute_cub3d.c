@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:15:07 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/07 14:05:42 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ t_texture_info	*open_texture(char *texture_path, t_window *window)
 	int				row;
 	int				col;
 
-	data.image = mlx_xpm_file_to_image(window->mlx, texture_path, &data.width, &data.height);
-	if (data.image == NULL)
-		ctrl_error("wrong texture");
-	data.temp =  (int *)mlx_get_data_addr(data.image, &data.bpp, &data.line_size, &data.endian);
 	texture = (t_texture_info *)malloc(sizeof(t_texture_info));
 	if (texture == NULL)
 		ctrl_error("wrong texture");
-	texture->data = (int *)malloc(sizeof(int) * (data.width * data.height));
+	data.image = mlx_xpm_file_to_image(window->mlx, texture_path, &texture->width, &texture->height);
+	if (data.image == NULL)
+		ctrl_error("wrong texture");
+	data.temp =  (int *)mlx_get_data_addr(data.image, &data.bpp, &data.line_size, &data.endian);
+	texture->data = (int *)malloc(sizeof(int) * (texture->width * texture->height));
 	row = -1;
-	while (++row < data.height)
+	while (++row < texture->height)
 	{
 		col = -1;
-		while (++col < data.width)
-			texture->data[data.width * row + col] = data.temp[data.width * row + col];
+		while (++col < texture->width)
+			texture->data[texture->width * row + col] = data.temp[texture->width * row + col];
 	}
 	return (texture);
 }
