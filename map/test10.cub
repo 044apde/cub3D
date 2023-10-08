@@ -1,7 +1,7 @@
-NO   texture/decor_8x8.xpm
-SO     texture/greystone.xpm
-WE        texture/mossy.xpm
-EA         texture/wood.xpm
+NO   texture/dog1.xpm
+SO     texture/dog2.xpm
+WE        texture/dog3.xpm
+EA         texture/dog4.xpm
 
 F           128,128,128
 C           0,127,255

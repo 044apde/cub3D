@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 00:16:13 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 14:01:22 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_
 		tex_pos += step;
 		if (ray->side == 0)
 		{
-			color = texture_set->w_texture->data[texture_set->w_texture->height * tex_y + tex_x];;
+			color = texture_set->w_texture->data[texture_set->w_texture->width * tex_y + tex_x];;
 			if (ray->ray_dir_x > 0)
-				color = texture_set->e_texture->data[texture_set->e_texture->height * tex_y + tex_x];;
+				color = texture_set->e_texture->data[texture_set->e_texture->width * tex_y + tex_x];;
 		}
 		if (ray->side == 1)
 		{
-			color = texture_set->s_texture->data[texture_set->s_texture->height * tex_y + tex_x];
+			color = texture_set->s_texture->data[texture_set->s_texture->width * tex_y + tex_x];
 			if (ray->ray_dir_y > 0)
-				color = texture_set->n_texture->data[texture_set->n_texture->height * tex_y + tex_x];
+				color = texture_set->n_texture->data[texture_set->n_texture->width * tex_y + tex_x];
 		}
 		my_put_pixel(buffer, ray->x, y, color);
 	}

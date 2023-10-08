@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 23:19:26 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 13:54:23 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ typedef struct s_temp_data
 {
 	void	*image;
 	int		*texture;
-    int		width;
-    int		height;
 	int		bpp;
 	int		line_size;
 	int		endian;

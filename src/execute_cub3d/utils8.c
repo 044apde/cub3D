@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 13:15:24 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/07 13:36:06 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 14:16:59 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	draw_background(t_image *buffer, t_ray *ray, t_texture_set *texture_set)
 		color = texture_set->ceil;
 		my_put_pixel(buffer, ray->x, y, color);
 	}
-	y = ray->draw_end;
+	y = ray->draw_end - 1;
 	while (++y < WINDOW_HEIGHT)
 	{
 		color = texture_set->floor;
