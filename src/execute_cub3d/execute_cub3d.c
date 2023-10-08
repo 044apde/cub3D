@@ -6,11 +6,22 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:12:23 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 13:56:55 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 14:55:13 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void	*make_image(t_window *window, char *texpath, t_texture_info *texture)
+{
+	void	*image;
+
+	image = mlx_xpm_file_to_image(window->mlx, texpath, \
+		&texture->width, &texture->height);
+	if (image == NULL)
+		ctrl_error("wrong texture");
+	return (image);
+}
 
 t_texture_info	*open_texture(char *texture_path, t_window *window)
 {
@@ -22,18 +33,18 @@ t_texture_info	*open_texture(char *texture_path, t_window *window)
 	texture = (t_texture_info *)malloc(sizeof(t_texture_info));
 	if (texture == NULL)
 		ctrl_error("wrong texture");
-	data.image = mlx_xpm_file_to_image(window->mlx, texture_path, &texture->width, &texture->height);
-	if (data.image == NULL)
-		ctrl_error("wrong texture");
-	printf("%d %d\n", texture->width, texture->height);
-	data.temp =  (int *)mlx_get_data_addr(data.image, &data.bpp, &data.line_size, &data.endian);
-	texture->data = (int *)malloc(sizeof(int) * (texture->width * texture->height));
+	data.image = make_image(window, texture_path, texture);
+	data.temp = (int *)mlx_get_data_addr(data.image, \
+		&data.bpp, &data.line_size, &data.endian);
+	texture->data = (int *)malloc(sizeof(int) * \
+		(texture->width * texture->height));
 	row = -1;
 	while (++row < texture->height)
 	{
 		col = -1;
 		while (++col < texture->width)
-			texture->data[texture->width * row + col] = data.temp[texture->width * row + col];
+			texture->data[texture->width * row + col] = \
+				data.temp[texture->width * row + col];
 	}
 	return (texture);
 }

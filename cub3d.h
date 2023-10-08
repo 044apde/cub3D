@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 13:54:23 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 14:57:33 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,5 +220,7 @@ void		move_right(t_player *player, t_map *map_info);
 int			is_movable_place(t_map *map_info, int y, int x);
 int			create_trgb(char *color_string);
 void		draw_background(t_image *buffer, t_ray *ray, t_texture_set *texture_set);
+void		calculate_side_dist_x(t_ray *ray, t_player *player);
+void		calculate_side_dist_y(t_ray *ray, t_player *player);
 
 #endif

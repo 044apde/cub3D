@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:27:20 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 23:04:20 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 14:24:10 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@ void	trim_texture_path(t_map *map_info)
 	char	*dangling;
 
 	dangling = map_info->texture->no_path;
-	map_info->texture->no_path = ft_strtrim( map_info->texture->no_path, "\n");
+	map_info->texture->no_path = ft_strtrim(map_info->texture->no_path, "\n");
 	free(dangling);
 	dangling = map_info->texture->so_path;
-	map_info->texture->so_path = ft_strtrim( map_info->texture->so_path, "\n");
+	map_info->texture->so_path = ft_strtrim(map_info->texture->so_path, "\n");
 	free(dangling);
 	dangling = map_info->texture->ea_path;
-	map_info->texture->ea_path = ft_strtrim( map_info->texture->ea_path, "\n");
+	map_info->texture->ea_path = ft_strtrim(map_info->texture->ea_path, "\n");
 	free(dangling);
 	dangling = map_info->texture->we_path;
-	map_info->texture->we_path = ft_strtrim( map_info->texture->we_path, "\n");
+	map_info->texture->we_path = ft_strtrim(map_info->texture->we_path, "\n");
 	free(dangling);
-
 	return ;
 }
 

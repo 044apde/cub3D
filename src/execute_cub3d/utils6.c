@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 14:01:22 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:03:25 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	my_put_pixel(t_image *buffer, int x, int y, int color)
 {
 	char	*dest;
 
-	dest = buffer->addr + (y * buffer->line_length + x * (buffer->bits_per_pixel / 8));
+	dest = buffer->addr + (y * buffer->line_length + \
+		x * (buffer->bits_per_pixel / 8));
 	*(unsigned int *)dest = color;
 	return ;
 }
@@ -42,7 +43,31 @@ int	get_texture_height(t_ray *ray, t_texture_set *texture_set)
 	return (height);
 }
 
-void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_set, int tex_x)
+int	set_color(t_texture_set *texture_set, t_ray *ray, int tex_x, int tex_y)
+{
+	int	color;
+
+	if (ray->side == 0)
+	{
+		color = texture_set->w_texture->data[texture_set->w_texture->width \
+			* tex_y + tex_x];
+		if (ray->ray_dir_x > 0)
+			color = texture_set->e_texture->data[texture_set->e_texture->width \
+				* tex_y + tex_x];
+	}
+	if (ray->side == 1)
+	{
+		color = texture_set->s_texture->data[texture_set->s_texture->width \
+			* tex_y + tex_x];
+		if (ray->ray_dir_y > 0)
+			color = texture_set->n_texture->data[texture_set->n_texture->width \
+				* tex_y + tex_x];
+	}
+	return (color);
+}
+
+void	set_pixel_from_texture(t_image *buffer, t_ray *ray, \
+	t_texture_set *texture_set, int tex_x)
 {
 	int		y;
 	int		tex_y;
@@ -51,29 +76,20 @@ void	set_pixel_from_texture(t_image *buffer, t_ray *ray, t_texture_set *texture_
 	double	tex_pos;
 
 	step = 1.0 * get_texture_height(ray, texture_set) / ray->line_height;
-	tex_pos = (ray->draw_start - WINDOW_HEIGHT / 2 + ray->line_height / 2) * step;
+	tex_pos = (ray->draw_start - WINDOW_HEIGHT / 2 \
+		+ ray->line_height / 2) * step;
 	y = ray->draw_start - 1;
 	while (++y < ray->draw_end)
 	{
 		tex_y = (int)tex_pos & (get_texture_height(ray, texture_set) - 1);
 		tex_pos += step;
-		if (ray->side == 0)
-		{
-			color = texture_set->w_texture->data[texture_set->w_texture->width * tex_y + tex_x];;
-			if (ray->ray_dir_x > 0)
-				color = texture_set->e_texture->data[texture_set->e_texture->width * tex_y + tex_x];;
-		}
-		if (ray->side == 1)
-		{
-			color = texture_set->s_texture->data[texture_set->s_texture->width * tex_y + tex_x];
-			if (ray->ray_dir_y > 0)
-				color = texture_set->n_texture->data[texture_set->n_texture->width * tex_y + tex_x];
-		}
+		color = set_color(texture_set, ray, tex_x, tex_y);
 		my_put_pixel(buffer, ray->x, y, color);
 	}
 }
 
-void	fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *texture_set)
+void	fill_buffer(t_image *buffer, t_player *player, \
+	t_ray *ray, t_texture_set *texture_set)
 {
 	double	wall_x;
 	double	tex_x;
