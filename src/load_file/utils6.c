@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/21 15:43:53 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:22:58 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ int	is_empty_space(char component)
 
 void	check_is_surrouned(char **map, int h, int w, t_map *map_info)
 {
-	check_north_is_empty(map_info, map, h, w);
+	check_north_is_empty(map, h, w);
 	check_south_is_empty(map_info, map, h, w);
 	check_east_is_empty(map_info, map, h, w);
-	check_west_is_empty(map_info, map, h, w);
+	check_west_is_empty(map, h, w);
 }
 
 void	check_map_is_closed(char **map, t_map *map_info)

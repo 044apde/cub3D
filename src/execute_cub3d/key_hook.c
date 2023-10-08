@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 17:26:12 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:23:57 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	move_player(t_player *player, t_map *map_info, int keycode)
 	return ;
 }
 
-void	rotate_player(t_player *p, t_map *map_info, int keycode)
+void	rotate_player(t_player *p, int keycode)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -80,8 +80,6 @@ int	key_hook(int keycode, t_render *temp)
 {
 	t_map		*map_info;
 	t_player	*player;
-	double		old_dir_x;
-	double		old_plane_x;
 
 	map_info = temp->map_info;
 	player = temp->player;
@@ -91,6 +89,6 @@ int	key_hook(int keycode, t_render *temp)
 			|| keycode == KEY_S || keycode == KEY_D)
 		move_player(player, map_info, keycode);
 	else if (keycode == 124 || keycode == 123)
-		rotate_player(player, map_info, keycode);
+		rotate_player(player, keycode);
 	return (0);
 }

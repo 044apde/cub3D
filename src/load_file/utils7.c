@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:27:20 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 14:24:10 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:22:45 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	trim_texture_path(t_map *map_info)
 	return ;
 }
 
-void	check_north_is_empty(t_map *map_info, char **map, int h, int w)
+void	check_north_is_empty(char **map, int h, int w)
 {
 	if (h - 1 < 0)
 		ctrl_error("map must be closed by wall\n");
@@ -58,7 +58,7 @@ void	check_east_is_empty(t_map *map_info, char **map, int h, int w)
 	return ;
 }
 
-void	check_west_is_empty(t_map *map_info, char **map, int h, int w)
+void	check_west_is_empty(char **map, int h, int w)
 {
 	if (w - 1 < 0)
 		ctrl_error("map must be closed by wall\n");

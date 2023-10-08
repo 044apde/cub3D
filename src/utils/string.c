@@ -42,7 +42,6 @@ void	free_two_dimension_array(char **array)
 
 char	*trim_path(char *path)
 {
-	char	*trimmend_path;
 	int		i;
 
 	i = 0;

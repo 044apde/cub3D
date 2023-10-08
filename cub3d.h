@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 15:15:25 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:23:12 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,10 +189,10 @@ char		**make_map_array(t_map *map_info, char *map_path);
 int			is_map_component(char component);
 void		check_starting_position(char **map, t_map *map_info);
 void		check_map_is_closed(char **map, t_map *map_info);
-void		check_north_is_empty(t_map *map_info, char **map, int h, int w);
+void		check_north_is_empty(char **map, int h, int w);
 void		check_south_is_empty(t_map *map_info, char **map, int h, int w);
 void		check_east_is_empty(t_map *map_info, char **map, int h, int w);
-void		check_west_is_empty(t_map *map_info, char **map, int h, int w);
+void		check_west_is_empty(char **map, int h, int w);
 int			is_empty_space(char component);
 void		trim_texture_path(t_map *map_info);
 
@@ -207,7 +207,7 @@ void		calculate_side_dist(t_ray *ray, t_player *player);
 void		calculate_ray_dir(t_ray *ray, t_player *player, \
 				t_map *map_info, int x);
 void		calculate_where_is_ray_in(t_ray *ray, \
-				t_player *player, t_map *map_info);
+				t_player *player);
 void		calculate_delta_dist(t_ray *ray);
 void		find_wall(t_ray *ray, t_map *map_info);
 void		calculate_distance_to_wall(t_ray *ray, t_player *player);

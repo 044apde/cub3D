@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:13:41 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 13:53:36 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:24:04 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window, \
 	while (++x <= WINDOW_WIDTH)
 	{
 		calculate_ray_dir(ray, player, map_info, x);
-		calculate_where_is_ray_in(ray, player, map_info);
+		calculate_where_is_ray_in(ray, player);
 		calculate_delta_dist(ray);
 		calculate_side_dist(ray, player);
 		find_wall(ray, map_info);

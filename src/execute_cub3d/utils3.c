@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 20:24:07 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/06 17:27:15 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:23:06 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	calculate_ray_dir(t_ray *ray, t_player *player, t_map *map_info, int x)
 	return ;
 }
 
-void	calculate_where_is_ray_in(t_ray *ray, t_player *player, t_map *map_info)
+void	calculate_where_is_ray_in(t_ray *ray, t_player *player)
 {
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
