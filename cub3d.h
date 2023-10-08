@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 15:08:25 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:15:25 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,26 +201,31 @@ void		execute_cub3d(t_map *map_info);
 int			render_graphic(t_render *temp);
 int			key_hook(int keycode, t_render *temp);
 t_player	*init_player(t_map *map_info);
-t_window	*init_window();
-double		absolutilize(double	num);
+t_window	*init_window(void);
+double		absolutilize(double num);
 void		calculate_side_dist(t_ray *ray, t_player *player);
-void		calculate_ray_dir(t_ray *ray, t_player *player, t_map *map_info, int x);
-void		calculate_where_is_ray_in(t_ray *ray, t_player *player, t_map *map_info);
+void		calculate_ray_dir(t_ray *ray, t_player *player, \
+				t_map *map_info, int x);
+void		calculate_where_is_ray_in(t_ray *ray, \
+				t_player *player, t_map *map_info);
 void		calculate_delta_dist(t_ray *ray);
 void		find_wall(t_ray *ray, t_map *map_info);
 void		calculate_distance_to_wall(t_ray *ray, t_player *player);
 void		calculate_wall_height(t_ray *ray);
 double		calculate_wall_x(int side, t_player *player, t_ray *ray);
-int			calculate_tex_x(int side, double wall_x, t_ray *ray, t_texture_set *texture_set);
+int			calculate_tex_x(int side, double wall_x, \
+				t_ray *ray, t_texture_set *texture_set);
 void		my_put_pixel(t_image *buffer, int x, int y, int color);
-void		fill_buffer(t_image *buffer, t_player *player, t_ray *ray, t_texture_set *texture_set);
+void		fill_buffer(t_image *buffer, t_player *player, \
+				t_ray *ray, t_texture_set *texture_set);
 void		move_forward(t_player *player, t_map *map_info);
 void		move_left(t_player *player, t_map *map_info);
 void		move_back(t_player *player, t_map *map_info);
 void		move_right(t_player *player, t_map *map_info);
 int			is_movable_place(t_map *map_info, int y, int x);
 int			create_trgb(char *color_string);
-void		draw_background(t_image *buffer, t_ray *ray, t_texture_set *texture_set);
+void		draw_background(t_image *buffer, t_ray *ray, \
+				t_texture_set *texture_set);
 void		calculate_side_dist_x(t_ray *ray, t_player *player);
 void		calculate_side_dist_y(t_ray *ray, t_player *player);
 
