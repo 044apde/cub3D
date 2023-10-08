@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 13:15:24 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 14:24:16 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:13:41 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ int	create_trgb(char *color_string)
 	r = ft_atoi(color_code[0]);
 	g = ft_atoi(color_code[1]);
 	b = ft_atoi(color_code[2]);
+	free(color_code[0]);
+	free(color_code[1]);
+	free(color_code[2]);
+	free(color_code);
 	return (0 << 24 | r << 16 | g << 8 | b);
 }
 

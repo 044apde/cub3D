@@ -13,7 +13,8 @@ SOURCE		=	main.c \
 				src/execute_cub3d/utils3.c src/execute_cub3d/utils4.c src/execute_cub3d/utils5.c \
 				src/execute_cub3d/utils6.c src/execute_cub3d/utils7.c src/execute_cub3d/utils8.c \
 				src/execute_cub3d/utils9.c \
-				src/execute_cub3d/key_hook.c src/execute_cub3d/render_graphic.c
+				src/execute_cub3d/key_hook.c src/execute_cub3d/render_graphic.c \
+				src/utils/free_render_memory.c
 HEADER		=	cub3d.h
 LIBRARY 	=	libft/libft.a mlx/libmlx.a
 OBJECT		=	$(SOURCE:.c=.o)

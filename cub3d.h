@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 14:57:33 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:08:25 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ int			open_file(char *map_path);
 char		*trim_path(char *path);
 void		free_map_info(t_map *map_info);
 void		show_map(char **map, t_map *map_info);
+void		free_render_memory(t_render	*render);
 
 // PARSE INPUT
 char		*parse_input(char *input);
