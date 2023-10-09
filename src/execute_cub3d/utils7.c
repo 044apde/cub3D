@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:17:12 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 14:24:52 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/09 17:03:09 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	move_forward(t_player *player, t_map *map_info)
 		player->dir_y * MOVE_SPEED), \
 			(int)(player->pos_x + player->dir_x * MOVE_SPEED)) == TRUE)
 	{
+		printf("y %f x %f\n", player->pos_y + player->dir_y * MOVE_SPEED, player->pos_x + player->dir_x * MOVE_SPEED);
 		player->pos_y += player->dir_y * MOVE_SPEED;
 		player->pos_x += player->dir_x * MOVE_SPEED;
 	}
