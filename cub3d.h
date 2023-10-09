@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 15:23:12 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/09 17:42:40 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define KEY_S 1
 # define KEY_D 2
 # define MOVE_SPEED 0.1
+# define MOVE_TEMP 0.2
 # define ROTSPEED 0.2
 # define WALL 1
 
@@ -140,7 +141,7 @@ typedef struct s_map
 typedef struct s_image
 {
 	void	*image;
-	char	*addr;
+	char		*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;

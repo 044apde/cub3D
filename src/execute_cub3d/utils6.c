@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 15:03:25 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/09 17:57:56 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	my_put_pixel(t_image *buffer, int x, int y, int color)
 {
 	char	*dest;
 
-	dest = buffer->addr + (y * buffer->line_length + \
-		x * (buffer->bits_per_pixel / 8));
-	*(unsigned int *)dest = color;
+	dest = NULL;
+	if ((0 <= x && x < WINDOW_WIDTH) && (0 <= y && y < WINDOW_HEIGHT))
+	{
+		dest = buffer->addr + (y * buffer->line_length + x * (buffer->bits_per_pixel / 8));
+		*(unsigned int *)dest = color;
+	}
 	return ;
 }
 
@@ -49,16 +52,14 @@ int	set_color(t_texture_set *texture_set, t_ray *ray, int tex_x, int tex_y)
 
 	if (ray->side == 0)
 	{
-		color = texture_set->w_texture->data[texture_set->w_texture->width \
-			* tex_y + tex_x];
+		color = texture_set->w_texture->data[texture_set->w_texture->width * tex_y + tex_x];
 		if (ray->ray_dir_x > 0)
 			color = texture_set->e_texture->data[texture_set->e_texture->width \
 				* tex_y + tex_x];
 	}
 	if (ray->side == 1)
 	{
-		color = texture_set->s_texture->data[texture_set->s_texture->width \
-			* tex_y + tex_x];
+		color = texture_set->s_texture->data[texture_set->s_texture->width * tex_y + tex_x];
 		if (ray->ray_dir_y > 0)
 			color = texture_set->n_texture->data[texture_set->n_texture->width \
 				* tex_y + tex_x];

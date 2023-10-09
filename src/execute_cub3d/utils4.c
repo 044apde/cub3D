@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/08 15:00:31 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/09 17:32:28 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	calculate_distance_to_wall(t_ray *ray, t_player *player)
 
 void	calculate_wall_height(t_ray *ray)
 {
+	if (ray->perp_wall_dist == 0)
+		ray->perp_wall_dist = 1;
 	ray->line_height = (int)(WINDOW_HEIGHT / ray->perp_wall_dist);
 	ray->draw_start = -(ray->line_height) / 2 + WINDOW_HEIGHT / 2;
 	if (ray->draw_start < 0)
