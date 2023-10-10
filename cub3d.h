@@ -43,6 +43,7 @@
 # define MOVE_TEMP 0.2
 # define ROTSPEED 0.2
 # define WALL 1
+# define ON_DESTROY 17
 
 typedef struct s_texture_info
 {
@@ -201,6 +202,8 @@ void		trim_texture_path(t_map *map_info);
 void		execute_cub3d(t_map *map_info);
 int			render_graphic(t_render *temp);
 int			key_hook(int keycode, t_render *temp);
+int			event_hook(t_window *temp);
+void		end_cub3d(void);
 t_player	*init_player(t_map *map_info);
 t_window	*init_window(void);
 double		absolutilize(double num);

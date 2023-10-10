@@ -95,6 +95,7 @@ void	execute_cub3d(t_map *map_info)
 	window = init_window();
 	render = init_render(player, window, map_info);
 	mlx_hook(window->win, 2, 1L << 0, key_hook, render);
+	mlx_hook(window->win, ON_DESTROY, 0, event_hook, window);
 	mlx_loop_hook(window->mlx, render_graphic, render);
 	mlx_loop(window->mlx);
 	free_render_memory(render);
