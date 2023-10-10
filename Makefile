@@ -1,7 +1,7 @@
 NAME		=	cub3D
 CC			=	cc
-CFLAGS		=	
-LDFLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g
+LDFLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g
 SOURCE		=	main.c \
 				src/parse_input/parse_input.c src/parse_input/utils1.c \
 				src/utils/error.c src/utils/string.c src/utils/file.c src/utils/free_info.c \
