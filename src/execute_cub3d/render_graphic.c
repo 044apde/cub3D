@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:13:41 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/10 15:07:43 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/10 15:14:10 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window, \
 	x = -1;
 	ray = init_ray();
 	buffer.image = mlx_new_image(window->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	buffer.addr = mlx_get_data_addr(buffer.image, &buffer.bits_per_pixel, &buffer.line_length, &buffer.endian);
+	buffer.addr = mlx_get_data_addr(buffer.image, \
+		&buffer.bits_per_pixel, &buffer.line_length, &buffer.endian);
 	while (++x <= WINDOW_WIDTH)
 	{
 		calculate_ray_dir(ray, player, map_info, x);
@@ -55,6 +56,7 @@ void	draw_screen(t_map *map_info, t_player *player, t_window *window, \
 
 int	render_graphic(t_render *render)
 {
-	draw_screen(render->map_info, render->player, render->window, render->texture_set);
+	draw_screen(render->map_info, render->player, \
+		render->window, render->texture_set);
 	return (0);
 }

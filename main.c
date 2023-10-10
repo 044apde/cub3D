@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:10:55 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/09 17:33:22 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/10 15:14:54 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	char	*map_path;
 	t_map	*map_info;
 
-	// atexit(test);
+	atexit(test);
 	if (argc != 2)
 	{
 		show_error("need one map file\n");
