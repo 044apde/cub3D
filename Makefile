@@ -1,6 +1,6 @@
 NAME		=	cub3D
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	
 LDFLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 SOURCE		=	main.c \
 				src/parse_input/parse_input.c src/parse_input/utils1.c \

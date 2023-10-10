@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/09 17:45:19 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/10 17:14:27 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,25 @@ void	end_cub3d(void)
 	exit(0);
 }
 
-int	is_movable_place(t_map *map_info, int y, int x)
+int	is_movable_place(t_map *map_info, t_player *player, int y, int x)
 {
 	char	**map;
 	int		map_height;
 	int		map_width;
+	int		result;
 
 	map = map_info->map;
 	map_height = map_info->height;
 	map_width = map_info->width;
+	result = TRUE;
 	if ((y >= 0 && y < map_height) && (x >= 0 && x < map_width))
 	{
-		if (is_empty_space(map[y][x]) == TRUE)
-			return (TRUE);
+		if (check_pass_diagonally(map_info, player, y, x) == FALSE)
+			return (FALSE);
+		if (is_empty_space(map[y][x]) == FALSE)
+			return (FALSE);
 	}
-	return (FALSE);
+	return (result);
 }
 
 void	move_player(t_player *player, t_map *map_info, int keycode)
