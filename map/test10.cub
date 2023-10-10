@@ -1,5 +1,5 @@
 NO   texture/dog1.xpm
-SO     texture/wood.xpm
+SO     texture/dog2.xpm
 WE        texture/dog3.xpm
 EA         texture/dog4.xpm
 
@@ -7,7 +7,7 @@ F           128,128,128
 C           0,127,255
 
 111111
-100001
+10001
 100001
 10N001
 100001

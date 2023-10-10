@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:25:58 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/09 17:57:56 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/10 14:59:59 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,19 @@ int	set_color(t_texture_set *texture_set, t_ray *ray, int tex_x, int tex_y)
 
 	if (ray->side == 0)
 	{
-		color = texture_set->w_texture->data[texture_set->w_texture->width * tex_y + tex_x];
 		if (ray->ray_dir_x > 0)
 			color = texture_set->e_texture->data[texture_set->e_texture->width \
 				* tex_y + tex_x];
+		else
+			color = texture_set->w_texture->data[texture_set->w_texture->width * tex_y + tex_x];
 	}
 	if (ray->side == 1)
 	{
-		color = texture_set->s_texture->data[texture_set->s_texture->width * tex_y + tex_x];
 		if (ray->ray_dir_y > 0)
 			color = texture_set->n_texture->data[texture_set->n_texture->width \
 				* tex_y + tex_x];
+		else
+			color = texture_set->s_texture->data[texture_set->s_texture->width * tex_y + tex_x];
 	}
 	return (color);
 }
