@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/11 14:16:05 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 16:11:37 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@
 # define ROTSPEED 0.2
 # define WALL 1
 # define ON_DESTROY 17
+# define RIGHT_UP 100
+# define RIGHT_DOWN 200
+# define LEFT_UP 300
+# define LEFT_DOWN 400
 
 typedef struct s_texture_info
 {
@@ -234,5 +238,6 @@ void		calculate_side_dist_x(t_ray *ray, t_player *player);
 void		calculate_side_dist_y(t_ray *ray, t_player *player);
 int			check_pass_diagonally(t_map *map_info, \
 				t_player *player, int y, int x);
+int			check_diagonal_move(t_map *map_info, t_player *player, int where_to_go);
 
 #endif

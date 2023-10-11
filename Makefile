@@ -1,7 +1,7 @@
 NAME		=	cub3D
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g
-LDFLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror
+LDFLAGS		=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 SOURCE		=	main.c \
 				src/parse_input/parse_input.c src/parse_input/utils1.c \
 				src/utils/error.c src/utils/string.c src/utils/file.c src/utils/free_info.c \
@@ -12,7 +12,7 @@ SOURCE		=	main.c \
 				src/execute_cub3d/execute_cub3d.c src/execute_cub3d/utils1.c src/execute_cub3d/utils2.c \
 				src/execute_cub3d/utils3.c src/execute_cub3d/utils4.c src/execute_cub3d/utils5.c \
 				src/execute_cub3d/utils6.c src/execute_cub3d/utils7.c src/execute_cub3d/utils8.c \
-				src/execute_cub3d/utils9.c \
+				src/execute_cub3d/utils9.c src/execute_cub3d/utils10.c \
 				src/execute_cub3d/key_hook.c src/execute_cub3d/event_hook.c src/execute_cub3d/render_graphic.c \
 				src/utils/free_render_memory.c
 HEADER		=	cub3d.h
@@ -38,6 +38,7 @@ clean		:
 
 fclean		:	clean
 	$(MAKE) -C libft fclean
+	$(MAKE) -C mlx clean
 
 re			:	fclean all
 

@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/11 15:19:47 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 16:39:23 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ int	is_movable_place(t_map *map_info, t_player *player, int y, int x)
 	char	**map;
 	int		map_height;
 	int		map_width;
-	int		result;
 
 	map = map_info->map;
 	map_height = map_info->height;
 	map_width = map_info->width;
-	result = TRUE;
 	if ((y >= 0 && y < map_height) && (x >= 0 && x < map_width))
 	{
 		if (check_pass_diagonally(map_info, player, y, x) == FALSE)
@@ -36,7 +34,7 @@ int	is_movable_place(t_map *map_info, t_player *player, int y, int x)
 		if (is_empty_space(map[y][x]) == FALSE)
 			return (FALSE);
 	}
-	return (result);
+	return (TRUE);
 }
 
 void	move_player(t_player *player, t_map *map_info, int keycode)
