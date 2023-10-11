@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:56:01 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/11 13:38:18 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 15:18:47 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ int	check_pass_right(t_map *info, t_player *player)
 {
 	if (player->dir_y > 0)
 	{
+		printf("1\n");
 		if ((info->map[(int)player->pos_y + 1][(int)player->pos_x] == '1') \
 			&& (info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
 			return (FALSE);
 	}
 	else
 	{
+		printf("2\n");
 		if ((info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
 			&& (info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
 			return (FALSE);
@@ -33,6 +35,7 @@ int	check_pass_left(t_map *info, t_player *player)
 {
 	if (player->dir_y > 0)
 	{
+		printf("3\n");
 		if ((info->map[(int)(player->pos_y + 1)][(int)(player->pos_x)] == '1') \
 			&& (info->map[(int)(player->pos_y)][(int)(player->pos_x - 1)] \
 				== '1'))
@@ -40,6 +43,7 @@ int	check_pass_left(t_map *info, t_player *player)
 	}
 	else
 	{
+		printf("4\n");
 		if ((info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
 			&& (info->map[(int)player->pos_y][(int)player->pos_x - 1] == '1'))
 			return (FALSE);
@@ -49,6 +53,7 @@ int	check_pass_left(t_map *info, t_player *player)
 
 int	check_pass_diagonally(t_map *map_info, t_player *player, int y, int x)
 {
+	printf("%f %f\n%d %d\n\n", player->pos_y, player->pos_x, y, x);
 	if ((int)player->pos_x != x && (int)player->pos_y != y)
 	{
 		if (player->dir_x > 0)
