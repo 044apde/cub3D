@@ -12,6 +12,20 @@
 
 #include "../../cub3d.h"
 
+static int check_color_range(char *color_string)
+{
+	int	rgb;
+
+	if (!color_string)
+		return (FALSE);
+	else if (ft_strlen(color_string) > 4)
+		return (FALSE);
+	rgb = ft_atoi(color_string);
+	if (rgb < 0 || 255 < rgb)
+		return (FALSE);
+	return (TRUE);
+}
+
 static int	check_seperator(char *color_string)
 {
 	int	i;
@@ -39,6 +53,8 @@ static int	check_array_number(char **array)
 	count = 0;
 	while (array[count] != NULL)
 	{
+		if (check_color_range(array[count]) == FALSE)
+			return (FALSE);
 		++count;
 	}
 	if (count != 3)
