@@ -6,11 +6,46 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:56:01 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/10 17:13:38 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 13:38:18 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+int	check_pass_right(t_map *info, t_player *player)
+{
+	if (player->dir_y > 0)
+	{
+		if ((info->map[(int)player->pos_y + 1][(int)player->pos_x] == '1') \
+			&& (info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
+			return (FALSE);
+	}
+	else
+	{
+		if ((info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
+			&& (info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
+			return (FALSE);
+	}
+	return (TRUE);
+}
+
+int	check_pass_left(t_map *info, t_player *player)
+{
+	if (player->dir_y > 0)
+	{
+		if ((info->map[(int)(player->pos_y + 1)][(int)(player->pos_x)] == '1') \
+			&& (info->map[(int)(player->pos_y)][(int)(player->pos_x - 1)] \
+				== '1'))
+			return (FALSE);
+	}
+	else
+	{
+		if ((info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
+			&& (info->map[(int)player->pos_y][(int)player->pos_x - 1] == '1'))
+			return (FALSE);
+	}
+	return (TRUE);
+}
 
 int	check_pass_diagonally(t_map *map_info, t_player *player, int y, int x)
 {
@@ -18,33 +53,13 @@ int	check_pass_diagonally(t_map *map_info, t_player *player, int y, int x)
 	{
 		if (player->dir_x > 0)
 		{
-			if (player->dir_y > 0)
-			{
-				if ((map_info->map[(int)player->pos_y + 1][(int)player->pos_x] == '1') \
-					&& (map_info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
-					return (FALSE);
-			}
-			else
-			{
-				if ((map_info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
-					&& (map_info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
-					return (FALSE);
-			}
+			if (check_pass_right(map_info, player) == FALSE)
+				return (FALSE);
 		}
 		else if (player->dir_x < 0)
 		{
-			if (player->dir_y > 0)
-			{
-				if ((map_info->map[(int)(player->pos_y + 1)][(int)(player->pos_x)] == '1') \
-					&& (map_info->map[(int)(player->pos_y)][(int)(player->pos_x - 1)] == '1'))
-					return (FALSE);
-			}
-			else
-			{
-				if ((map_info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
-					&& (map_info->map[(int)player->pos_y][(int)player->pos_x - 1] == '1'))
-					return (FALSE);
-			}
+			if (check_pass_left(map_info, player) == FALSE)
+				return (FALSE);
 		}
 	}
 	return (TRUE);

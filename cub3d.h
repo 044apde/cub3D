@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:15:46 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/10 16:36:13 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 13:50:58 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ typedef struct s_map
 typedef struct s_image
 {
 	void	*image;
-	char		*addr;
+	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -232,7 +232,7 @@ void		draw_background(t_image *buffer, t_ray *ray, \
 				t_texture_set *texture_set);
 void		calculate_side_dist_x(t_ray *ray, t_player *player);
 void		calculate_side_dist_y(t_ray *ray, t_player *player);
-int			check_pass_diagonally(t_map *map_info,\
-				 t_player *player, int y, int x);
+int			check_pass_diagonally(t_map *map_info, \
+				t_player *player, int y, int x);
 
 #endif

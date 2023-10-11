@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   event_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusohn <jusohn@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:32 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/10 17:21:25 by jusohn           ###   ########.fr       */
+/*   Updated: 2023/10/11 13:34:38 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int event_hook(t_window *temp)
+int	event_hook(t_window *temp)
 {
 	mlx_destroy_image(temp->mlx, temp->win);
-    end_cub3d();
-    return (0);
+	end_cub3d();
+	return (0);
 }
