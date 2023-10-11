@@ -6,66 +6,56 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:56:01 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/11 15:18:47 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 16:41:17 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	check_pass_right(t_map *info, t_player *player)
+int	is_diagonal_move(t_player *player, int y, int x)
 {
-	if (player->dir_y > 0)
+	int	result;
+
+	result = FALSE;
+	if ((int)player->pos_x != x && (int)player->pos_y != y)
 	{
-		printf("1\n");
-		if ((info->map[(int)player->pos_y + 1][(int)player->pos_x] == '1') \
-			&& (info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
-			return (FALSE);
+		result = TRUE;
 	}
-	else
-	{
-		printf("2\n");
-		if ((info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
-			&& (info->map[(int)player->pos_y][(int)player->pos_x + 1] == '1'))
-			return (FALSE);
-	}
-	return (TRUE);
+	return (result);
 }
 
-int	check_pass_left(t_map *info, t_player *player)
+int	check_where_to_go(t_player *player, int y, int x)
 {
-	if (player->dir_y > 0)
+	int	where_to_go;
+
+	if (x - (int)player->pos_x > 0)
 	{
-		printf("3\n");
-		if ((info->map[(int)(player->pos_y + 1)][(int)(player->pos_x)] == '1') \
-			&& (info->map[(int)(player->pos_y)][(int)(player->pos_x - 1)] \
-				== '1'))
-			return (FALSE);
+		if (y - (int)player->pos_y > 0)
+			where_to_go = RIGHT_UP;
+		else
+			where_to_go = RIGHT_DOWN;
 	}
 	else
 	{
-		printf("4\n");
-		if ((info->map[(int)player->pos_y - 1][(int)player->pos_x] == '1') \
-			&& (info->map[(int)player->pos_y][(int)player->pos_x - 1] == '1'))
-			return (FALSE);
+		if (y - (int)player->pos_y > 0)
+			where_to_go = LEFT_UP;
+		else
+			where_to_go = LEFT_DOWN;
 	}
-	return (TRUE);
+	return (where_to_go);
 }
 
 int	check_pass_diagonally(t_map *map_info, t_player *player, int y, int x)
 {
-	printf("%f %f\n%d %d\n\n", player->pos_y, player->pos_x, y, x);
-	if ((int)player->pos_x != x && (int)player->pos_y != y)
+	int	where_to_go;
+
+	if (is_diagonal_move(player, y, x) == FALSE)
+		return (TRUE);
+	else
 	{
-		if (player->dir_x > 0)
-		{
-			if (check_pass_right(map_info, player) == FALSE)
-				return (FALSE);
-		}
-		else if (player->dir_x < 0)
-		{
-			if (check_pass_left(map_info, player) == FALSE)
-				return (FALSE);
-		}
+		where_to_go = check_where_to_go(player, y, x);
+		if (check_diagonal_move(map_info, player, where_to_go) == FALSE)
+			return (FALSE);
 	}
 	return (TRUE);
 }
