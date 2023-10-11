@@ -6,25 +6,18 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:10:55 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/11 13:41:37 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 13:52:28 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "mlx/mlx.h"
 
-void	check(void)
-{
-	system("leaks cub3D");
-	return ;
-}
-
 int	main(int argc, char **argv)
 {
 	char	*map_path;
 	t_map	*map_info;
 
-	atexit(check);
 	if (argc != 2)
 	{
 		show_error("need one map file\n");
