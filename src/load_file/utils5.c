@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:50 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/05 12:45:05 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/11 17:17:44 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**init_map(t_map *map_info)
 	else
 	{
 		map[map_info->height] = NULL;
-		while (map[i] != NULL)
+		while (i < map_info->height)
 		{
 			map[i] = (char *)malloc(sizeof(char) *(map_info->width + 1));
 			if (map[i] == NULL)
