@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 21:08:31 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/09 17:32:28 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/12 17:19:57 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	find_wall(t_ray *ray, t_map *map_info)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map_info->map[ray->map_y][ray->map_x] == '1')
+		if ((ray->map_y < map_info->height && ray->map_x < map_info->width) \
+			&& map_info->map[ray->map_y][ray->map_x] == '1')
 		{
 			ray->hit = 1;
 		}
