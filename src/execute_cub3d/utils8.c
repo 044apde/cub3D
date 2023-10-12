@@ -6,13 +6,13 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 13:15:24 by shikim            #+#    #+#             */
-/*   Updated: 2023/10/09 17:37:19 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/12 13:49:17 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-static int check_color_range(char *color_string)
+static int	check_color_range(char *color_string)
 {
 	int	rgb;
 
