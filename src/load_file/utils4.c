@@ -48,6 +48,7 @@ void	set_map_width_height(t_map *map_info, int fd)
 	int		empty_line_flag;
 
 	line = skip_empty_line(fd);
+	empty_line_flag = FALSE;
 	while (TRUE)
 	{
 		if (line == NULL)
