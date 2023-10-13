@@ -6,7 +6,7 @@
 /*   By: shikim <shikim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:49:56 by shikim            #+#    #+#             */
-/*   Updated: 2023/09/19 21:57:22 by shikim           ###   ########.fr       */
+/*   Updated: 2023/10/13 14:00:40 by shikim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*trim_path(char *path)
 		return (NULL);
 	else
 	{
-		while (path[i] != '\n')
+		while (path[i] != '\n' && path[i] != '\0')
 			++i;
 		path[i] = '\0';
 	}
