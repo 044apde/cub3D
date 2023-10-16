@@ -18,6 +18,8 @@ static int	check_color_range(char *color_string)
 
 	if (!color_string)
 		return (FALSE);
+	else if (*color_string == '\n' || *color_string == '\0')
+		return (FALSE);
 	else if (ft_strlen(color_string) > 4)
 		return (FALSE);
 	rgb = ft_atoi(color_string);
