@@ -1,4 +1,6 @@
-# so_long – 2D 맵 기반 게임
+# so_long – 2D 맵 기반 게임  
+
+<img width="1214" alt="Screen Shot 2023-10-17 at 5 36 36 PM" src="https://github.com/044apde/cub3D/assets/59429612/1a822a79-0530-47d1-86d3-d8c8787c591f">  
 
 ## 개요
 **so_long**은 42 과제 기반의 2D 게임 프로젝트입니다.  
@@ -58,6 +60,3 @@ MiniLibX를 사용하여 맵을 렌더링하고, 플레이어가 수집품을 �
 ```bash
 make
 ./so_long map.ber  
-
-
-<img width="1214" alt="Screen Shot 2023-10-17 at 5 36 36 PM" src="https://github.com/044apde/cub3D/assets/59429612/1a822a79-0530-47d1-86d3-d8c8787c591f">
